@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Our Services | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ── Modern Professional Blue Palette (Original) ── */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #3B82F6 !important; 
+        }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: var(--color-accent) !important;
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        /* ── Page Specific ── */
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+        @media (min-width: 1280px) {
+            .section-padding { padding: 7rem 4rem; }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* ═══ SERVICES HERO (dark radial) ═══ */
+        .hero-services {
+            position: relative;
+            background: radial-gradient(ellipse at top right, #1E3A8A 0%, #0F172A 55%, #020617 100%);
+            overflow: hidden;
+        }
+        .hero-services::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+        }
+        .hero-orb-1 { width: 500px; height: 500px; background: rgba(59,130,246,0.35); top: -150px; right: -100px; }
+        .hero-orb-2 { width: 400px; height: 400px; background: rgba(6,182,212,0.25); bottom: -100px; left: -100px; }
+
+        /* ═══ HUGE NUMBERED SERVICE BLOCKS ═══ */
+        .service-block-num {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.15;
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ═══ SERVICE ICON TILE ═══ */
+        .service-icon-tile {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1.25rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 28px -8px rgba(59,130,246,0.5);
+            flex-shrink: 0;
+        }
+
+        /* ═══ FEATURE PILL ═══ */
+        .feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            background: var(--color-hover);
+            border: 1px solid var(--color-border);
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+        }
+        .feature-pill i { color: var(--color-accent); font-size: 0.7rem; }
+
+        /* ═══ PRICING CARD ═══ */
+        .price-card {
+            border: 1.5px solid var(--color-border);
+            border-radius: 1.5rem;
+            background: var(--color-background);
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .price-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-accent);
+            box-shadow: 0 24px 48px -12px rgba(37, 99, 235, 0.2);
+        }
+        .price-card.featured {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 24px 48px -12px rgba(37, 99, 235, 0.5);
+        }
+
+        /* ═══ PROCESS STEP CONNECTOR ═══ */
+        .step-connector {
+            position: absolute;
+            top: 40px;
+            left: -30px;
+            right: -30px;
+            height: 2px;
+            background: repeating-linear-gradient(
+                to right,
+                var(--color-accent) 0,
+                var(--color-accent) 6px,
+                transparent 6px,
+                transparent 12px
+            );
+            opacity: 0.35;
+            z-index: 0;
+        }
+        @media (max-width: 767px) {
+            .step-connector { display: none; }
+        }
+
+        /* ═══ TESTIMONIAL ═══ */
+        .testimonial-card {
+            background: var(--color-background);
+            border: 1.5px solid var(--color-border);
+            border-radius: 1.5rem;
+            padding: 1.75rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -2rem;
+            right: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: var(--color-accent);
+            opacity: 0.06;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .testimonial-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.2);
+        }
+
+        /* ═══ CATEGORY CHIP ═══ */
+        .cat-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 0.85rem;
+            border-radius: 999px;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ═══ SCROLLBAR HIDDEN (for horizontal service tabs) ═══ */
+        .scrollbar-hidden::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hidden {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR (UNCHANGED) ═══════════════ -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
+                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
+                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER (UNCHANGED) ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT — SERVICES ═══════════════ -->
+    <main class="flex-grow">
+<!-- ═══════ SECTION 1: PROFESSIONAL HERO ═══════ -->
+<section class="relative w-full bg-slate-950 overflow-hidden">
+
+    <!-- Solid dark background with a single subtle gradient -->
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);"></div>
+
+    <!-- Single subtle grid pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 80px 80px;"></div>
+
+    <!-- One soft glow -->
+    <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-3xl pointer-events-none" style="background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-40 pb-24">
+
+        <!-- Top: eyebrow -->
+        <div class="text-center mb-8">
+            <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
+                </span>
+                <span class="text-xs font-bold tracking-[0.2em] uppercase text-blue-100">Now Booking · Free Site Visits</span>
+            </span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="text-center font-bold tracking-tight text-white leading-[1.05] mb-6 max-w-4xl mx-auto"
+            style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 5.5rem);">
+            Six core services.<br>
+            <span class="italic text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #93C5FD 0%, #60A5FA 50%, #22D3EE 100%);">One trusted team.</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-center text-lg sm:text-xl text-blue-100/70 max-w-2xl mx-auto leading-relaxed mb-10">
+            From geological survey to final filtration — every step of your water journey, delivered by certified engineers with transparent pricing.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+            <a href="contact.html" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-2xl shadow-blue-500/30 flex items-center justify-center gap-2.5 hover:-translate-y-1 transition-all duration-300">
+                <i class="fa-solid fa-calendar-check"></i> Book Free Site Visit
+            </a>
+            <a href="#services-list" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/20 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2.5 backdrop-blur-sm">
+                <i class="fa-solid fa-arrow-down"></i> Browse Services
+            </a>
+        </div>
+
+        <!-- Divider line -->
+        <div class="h-px bg-white/10 mb-14 max-w-4xl mx-auto"></div>
+
+        <!-- Service grid — 6 tiles, non-clickable -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-16 max-w-5xl mx-auto">
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-bore-hole text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">Drilling</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹350/ft</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-faucet text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">Pumps</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹18,500</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-filter text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">Purification</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹8,999</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-shower text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">Softener</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">Hard water fix</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-network-wired text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">Pipeline</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">Full plumbing</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                    <i class="fa-solid fa-screwdriver-wrench text-white text-lg"></i>
+                </div>
+                <div class="text-center">
+                    <div class="text-sm font-bold text-white">AMC</div>
+                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">24/7 coverage</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">2500+</div>
+                <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Projects Done</div>
+            </div>
+            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">15+</div>
+                <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Years Exp</div>
+            </div>
+            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">98%</div>
+                <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Success Rate</div>
+            </div>
+            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+                <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">24/7</div>
+                <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Support</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom fade -->
+    <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none"></div>
+</section>
+ <!-- ═══════ SECTION 2: SERVICE INDEX ═══════ -->
+<section class="relative bg-background border-y border-border">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-16 sm:py-20">
+
+        <!-- Section header -->
+        <div class="mb-12">
+            <span class="inline-flex items-center gap-3 text-accent font-bold text-xs tracking-[0.25em] uppercase">
+                <span class="w-10 h-px bg-accent"></span> Service Index
+            </span>
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mt-4">
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.15] text-primary-text" style="font-family: 'Playfair Display', serif;">
+                    Everything we offer, <span class="italic text-accent">at a glance.</span>
+                </h2>
+                <p class="text-secondary-text text-sm md:pb-2">
+                    Six specialized services.
+                </p>
+            </div>
+        </div>
+
+        <!-- Service table -->
+        <div class="border-t border-border">
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">01</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">Borewell Drilling</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">Rotary &amp; DTH rigs</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Full site survey, geological assessment, and safe casing — engineered for maximum yield.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">From </span>
+                    <span class="text-lg font-bold text-accent">₹350</span>
+                    <span class="text-[10px] text-secondary-text font-semibold"> /ft</span>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">02</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">Pump Installation</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">Submersible · Monoblock</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Installed to exact depth with control panels, level controllers, and safe wiring.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">From </span>
+                    <span class="text-lg font-bold text-accent">₹18,500</span>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">03</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">Water Purification</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">RO · UV · TDS</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Multi-stage systems from kitchen units to commercial RO plants for hotels and factories.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">From </span>
+                    <span class="text-lg font-bold text-accent">₹8,999</span>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">04</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">Softeners &amp; Iron Removal</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">For hard water areas</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Protect pipes, taps, and appliances from scale and rust with whole-house treatment.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">Custom </span>
+                    <span class="text-lg font-bold text-accent">Quote</span>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">05</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">Pipeline &amp; Plumbing</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">Borewell → tank → taps</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Full pipeline design and installation. Leak-free, durable, and tested before handover.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">Custom </span>
+                    <span class="text-lg font-bold text-accent">Quote</span>
+                </div>
+            </div>
+
+            <!-- Row -->
+            <div class="grid grid-cols-[60px_1fr_auto] md:grid-cols-[80px_280px_1fr_auto] items-start gap-x-6 gap-y-3 py-6 border-b border-border">
+                <span class="hidden md:block text-2xl font-bold text-secondary-text/40 leading-none pt-1" style="font-family: 'Playfair Display', serif;">06</span>
+                <div>
+                    <div class="text-base md:text-lg font-bold text-primary-text leading-snug">AMC &amp; Maintenance</div>
+                    <div class="text-xs text-secondary-text font-medium mt-1">24/7 emergency support</div>
+                </div>
+                <div class="hidden md:block text-sm text-secondary-text leading-relaxed pt-1">
+                    Annual contracts with scheduled servicing, filter replacement, and priority repairs.
+                </div>
+                <div class="text-right md:pt-1 whitespace-nowrap">
+                    <span class="text-[10px] font-semibold text-secondary-text uppercase tracking-wider">Annual </span>
+                    <span class="text-lg font-bold text-accent">Plans</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+        <!-- ═══════ SECTION 3: DETAILED SERVICE BLOCKS ═══════ -->
+        <section id="services-list" class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+
+                <div class="text-center mb-20">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">What We Do</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Every Service, Explained</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Six distinct services — each delivered end-to-end by a dedicated specialist team.
+                    </p>
+                </div>
+
+                <div class="space-y-24 lg:space-y-32">
+
+                    <!-- SERVICE 01 -->
+                    <div id="service-1" class="relative">
+                        <span class="service-block-num">01</span>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+                            <div class="order-2 lg:order-1">
+                                <span class="cat-chip mb-4"><i class="fa-solid fa-bore-hole"></i> Core Service</span>
+                                <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style="font-family: 'Playfair Display', serif;">
+                                    Borewell Drilling
+                                </h3>
+                                <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
+                                    Complete borewell drilling from geological survey to casing, using rotary and DTH hammer rigs for maximum efficiency in hard rock, sand, and mixed terrain.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-7">
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Site Survey</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Rotary & DTH Rigs</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Depth up to 1500ft</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Yield Testing</span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-5">
+                                    <a href="contact.html" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm shadow-md">
+                                        Get Drilling Quote <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-xs text-secondary-text font-semibold uppercase tracking-wider">From</span>
+                                        <span class="text-2xl font-bold text-accent">₹350</span>
+                                        <span class="text-xs text-secondary-text font-semibold">/ ft</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-1 lg:order-2 relative">
+                                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                    <img src="/asserts/services1.avif" alt="Borewell drilling" class="w-full h-[360px] lg:h-[460px] object-cover">
+                                </div>
+                                <div class="absolute -bottom-5 left-6 bg-custom-gradient text-white rounded-2xl p-4 shadow-xl">
+                                    <div class="text-2xl font-bold">2500+</div>
+                                    <div class="text-xs text-blue-100 uppercase tracking-wider font-semibold">Borewells drilled</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SERVICE 02 -->
+                    <div id="service-2" class="relative">
+                        <span class="service-block-num" style="left: auto; right: -1rem;">02</span>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+                            <div class="order-2 relative">
+                                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                    <img src="/asserts/services2.avif" alt="Pump installation" class="w-full h-[360px] lg:h-[460px] object-cover">
+                                </div>
+                                <div class="absolute -bottom-5 right-6 bg-custom-gradient text-white rounded-2xl p-4 shadow-xl">
+                                    <div class="text-2xl font-bold">1200+</div>
+                                    <div class="text-xs text-blue-100 uppercase tracking-wider font-semibold">Pumps installed</div>
+                                </div>
+                            </div>
+                            <div class="order-1 lg:order-2">
+                                <span class="cat-chip mb-4"><i class="fa-solid fa-faucet"></i> Installation</span>
+                                <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style="font-family: 'Playfair Display', serif;">
+                                    Pump Installation
+                                </h3>
+                                <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
+                                    Submersible, monoblock, and jet pumps installed to exact depth with automatic control panels, level controllers, and safe electrical wiring.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-7">
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Submersible Pumps</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Monoblock & Jet</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Control Panels</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> 3-yr Warranty</span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-5">
+                                    <a href="contact.html" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm shadow-md">
+                                        Get Pump Quote <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-xs text-secondary-text font-semibold uppercase tracking-wider">From</span>
+                                        <span class="text-2xl font-bold text-accent">₹18,500</span>
+                                        <span class="text-xs text-secondary-text font-semibold">/ unit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SERVICE 03 -->
+                    <div id="service-3" class="relative">
+                        <span class="service-block-num">03</span>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center relative z-10">
+                            <div class="order-2 lg:order-1">
+                                <span class="cat-chip mb-4"><i class="fa-solid fa-filter"></i> Purification</span>
+                                <h3 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style="font-family: 'Playfair Display', serif;">
+                                    Water Purification
+                                </h3>
+                                <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-6">
+                                    Full RO, UV, and multi-stage purification systems tailored to your water source — from a single kitchen unit to commercial plants for hotels and factories.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-7">
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> RO + UV + TDS</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> 7-9 Stage Systems</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> Commercial RO Plants</span>
+                                    <span class="feature-pill"><i class="fa-solid fa-check"></i> 99% Purity</span>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-5">
+                                    <a href="contact.html" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm shadow-md">
+                                        Get Purification Quote <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-xs text-secondary-text font-semibold uppercase tracking-wider">From</span>
+                                        <span class="text-2xl font-bold text-accent">₹8,999</span>
+                                        <span class="text-xs text-secondary-text font-semibold">/ unit</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-1 lg:order-2 relative">
+                                <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                    <img src="/asserts/services3.avif" alt="Water purification" class="w-full h-[360px] lg:h-[460px] object-cover">
+                                </div>
+                                <div class="absolute -bottom-5 left-6 bg-custom-gradient text-white rounded-2xl p-4 shadow-xl">
+                                    <div class="text-2xl font-bold">99%</div>
+                                    <div class="text-xs text-blue-100 uppercase tracking-wider font-semibold">Purity achieved</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SERVICES 04-06: 3-column grid -->
+                    <div class="pt-8">
+                        <div class="text-center mb-12">
+                            <span class="text-accent font-bold text-sm tracking-widest uppercase">Additional Services</span>
+                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mt-3 mb-3" style="font-family: 'Playfair Display', serif;">More Ways We Help</h3>
+                            <p class="text-secondary-text text-base max-w-2xl mx-auto">
+                                Specialized services that round out our complete water solutions offering.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                            <div id="service-4" class="bg-hover rounded-3xl p-8 border border-border card-hover flex flex-col">
+                                <div class="service-icon-tile mb-6">
+                                    <i class="fa-solid fa-shower text-white text-xl"></i>
+                                </div>
+                                <span class="text-accent font-bold text-xs tracking-widest uppercase mb-3">Service 04</span>
+                                <h4 class="text-xl font-bold mb-3 text-primary-text">Softeners & Iron Removal</h4>
+                                <p class="text-secondary-text text-sm leading-relaxed flex-grow mb-6">
+                                    Water softeners and iron removal systems for hard water areas — protecting your pipes, taps, and appliances.
+                                </p>
+                                <a href="contact.html" class="inline-flex items-center gap-2 text-accent font-bold text-sm hover:gap-3 transition-all">
+                                    Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+
+                            <div id="service-5" class="bg-hover rounded-3xl p-8 border border-border card-hover flex flex-col">
+                                <div class="service-icon-tile mb-6">
+                                    <i class="fa-solid fa-network-wired text-white text-xl"></i>
+                                </div>
+                                <span class="text-accent font-bold text-xs tracking-widest uppercase mb-3">Service 05</span>
+                                <h4 class="text-xl font-bold mb-3 text-primary-text">Pipeline & Plumbing</h4>
+                                <p class="text-secondary-text text-sm leading-relaxed flex-grow mb-6">
+                                    Full pipeline design and installation from borewell to tank to taps — leak-free, durable, and tested before handover.
+                                </p>
+                                <a href="contact.html" class="inline-flex items-center gap-2 text-accent font-bold text-sm hover:gap-3 transition-all">
+                                    Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+
+                            <div id="service-6" class="bg-hover rounded-3xl p-8 border border-border card-hover flex flex-col">
+                                <div class="service-icon-tile mb-6">
+                                    <i class="fa-solid fa-screwdriver-wrench text-white text-xl"></i>
+                                </div>
+                                <span class="text-accent font-bold text-xs tracking-widest uppercase mb-3">Service 06</span>
+                                <h4 class="text-xl font-bold mb-3 text-primary-text">AMC & Maintenance</h4>
+                                <p class="text-secondary-text text-sm leading-relaxed flex-grow mb-6">
+                                    Annual maintenance contracts covering pump servicing, filter replacement, and 24/7 emergency repairs.
+                                </p>
+                                <a href="contact.html" class="inline-flex items-center gap-2 text-accent font-bold text-sm hover:gap-3 transition-all">
+                                    Learn more <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 4: HOW WE DELIVER ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">How We Deliver</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4" style="font-family: 'Playfair Display', serif;">Four Steps. Zero Guesswork.</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Every service follows the same disciplined process — from the first call to final handover.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+                    <div class="relative text-center">
+                        <div class="step-connector"></div>
+                        <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-custom-gradient text-white text-2xl font-bold shadow-xl mb-5 z-10">01</div>
+                        <h3 class="text-lg font-bold mb-2 text-primary-text">Free Consultation</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Call us or fill the form. We'll understand your needs and schedule a free site visit.</p>
+                    </div>
+                    <div class="relative text-center">
+                        <div class="step-connector"></div>
+                        <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-custom-gradient text-white text-2xl font-bold shadow-xl mb-5 z-10">02</div>
+                        <h3 class="text-lg font-bold mb-2 text-primary-text">Site Assessment</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Our engineer surveys the site, tests water, and recommends the optimal solution.</p>
+                    </div>
+                    <div class="relative text-center">
+                        <div class="step-connector"></div>
+                        <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-custom-gradient text-white text-2xl font-bold shadow-xl mb-5 z-10">03</div>
+                        <h3 class="text-lg font-bold mb-2 text-primary-text">Fixed Quote</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">You receive a detailed, itemised quotation — no hidden charges, ever.</p>
+                    </div>
+                    <div class="relative text-center">
+                        <div class="step-connector"></div>
+                        <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-custom-gradient text-white text-2xl font-bold shadow-xl mb-5 z-10">04</div>
+                        <h3 class="text-lg font-bold mb-2 text-primary-text">Delivery & Handover</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Our team completes the work, tests everything, and hands over with full documentation.</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-14">
+                    <a href="process.html" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold text-sm">
+                        See Full Process <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 5: SERVICE PACKAGES ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Packages</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4" style="font-family: 'Playfair Display', serif;">Bundle & Save</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Combine services into a single package and save on total cost with a unified warranty.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto">
+
+                    <div class="price-card">
+                        <div class="mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-droplet text-accent text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-1 text-primary-text">Essential</h3>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-secondary-text">For single homes</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-accent">₹65,000</span>
+                            <span class="text-sm text-secondary-text font-medium"> onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> 300ft borewell drilling</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> 1HP submersible pump</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Basic UV purification</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> 3-year warranty</li>
+                        </ul>
+                        <a href="contact.html" class="btn-outline w-full py-3.5 rounded-full font-bold text-sm flex items-center justify-center">
+                            Choose Essential
+                        </a>
+                    </div>
+
+                    <div class="price-card featured md:scale-105 z-10">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-blue-700 rounded-full px-4 py-1.5 text-[10px] font-bold tracking-[0.15em] uppercase shadow-lg whitespace-nowrap">
+                            Most Popular
+                        </div>
+                        <div class="mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-house-chimney text-white text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-1 text-white">Complete Home</h3>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-blue-100/80">For families</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-white">₹1,25,000</span>
+                            <span class="text-sm text-blue-100/80 font-medium"> onwards</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1 shrink-0"></i> 500ft borewell drilling</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1 shrink-0"></i> 2HP submersible + panel</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1 shrink-0"></i> 7-stage RO+UV system</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1 shrink-0"></i> Full pipeline installation</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1 shrink-0"></i> 5-year service warranty</li>
+                        </ul>
+                        <a href="contact.html" class="btn-cta-white w-full py-3.5 rounded-full font-bold text-sm flex items-center justify-center">
+                            Choose Complete
+                        </a>
+                    </div>
+
+                    <div class="price-card">
+                        <div class="mb-6">
+                            <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-4">
+                                <i class="fa-solid fa-crown text-accent text-lg"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-1 text-primary-text">Commercial</h3>
+                            <p class="text-xs font-semibold uppercase tracking-wider text-secondary-text">For industries</p>
+                        </div>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-accent">Custom</span>
+                            <span class="text-sm text-secondary-text font-medium"> quote</span>
+                        </div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Industrial-scale drilling</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Heavy-duty pumps</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Commercial RO plants</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Full AMC included</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1 shrink-0"></i> Dedicated account manager</li>
+                        </ul>
+                        <a href="contact.html" class="btn-outline w-full py-3.5 rounded-full font-bold text-sm flex items-center justify-center">
+                            Request Quote
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 6: TESTIMONIALS ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Client Feedback</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4" style="font-family: 'Playfair Display', serif;">What Clients Say</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Real stories from customers who chose AQUADRILL for their water needs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="testimonial-card">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic flex-1">
+                            "Drilled 460 feet and hit strong water on the first point. The team was professional, tidy, and delivered exactly what was promised."
+                        </p>
+                        <div class="flex items-center gap-3 h-20">
+                            <div class="w-12 h-12 rounded-full bg-custom-gradient flex items-center justify-center font-bold text-white text-sm shrink-0">RV</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Ramesh Verma</div>
+                                <div class="text-secondary-text text-xs">Homeowner, Pune</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic flex-1">
+                            "The full package — drilling, pump, and RO — was completed in 3 days. Excellent coordination and a single point of contact throughout."
+                        </p>
+                        <div class="flex items-center gap-3 h-20">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center font-bold text-white text-sm shrink-0">SP</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Sunita Pillai</div>
+                                <div class="text-secondary-text text-xs">Apartment Owner, Bangalore</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic flex-1">
+                            "Their AMC service is outstanding. Every quarter, the team shows up on schedule and the pump has been running flawlessly for 3 years."
+                        </p>
+                        <div class="flex items-center gap-3 h-20">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-700 flex items-center justify-center font-bold text-white text-sm shrink-0">AK</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Anil Kumar</div>
+                                <div class="text-secondary-text text-xs">Hotel Owner, Hyderabad</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- ═══════ SECTION 7: CTA ═══════ -->
+        <section class="section-padding bg-hover relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+                <div class="bg-background border border-border shadow-2xl rounded-3xl overflow-hidden flex flex-col lg:flex-row items-center">
+                    
+                    <!-- Left: Content -->
+                    <div class="w-full lg:w-3/5 p-8 sm:p-12 lg:p-16">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-light text-accent text-sm font-bold tracking-wide uppercase mb-6 border border-accent/20">
+                            <i class="fa-solid fa-headset"></i> Expert Advice
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-primary-text leading-tight">
+                            Not Sure Which <span class="text-accent">Service</span> You Need?
+                        </h2>
+                        <p class="text-secondary-text text-base sm:text-lg mb-8 leading-relaxed max-w-xl">
+                            Tell us about your water requirement and we'll recommend the exact combination of services you need — backed by a clear, no-obligation quote and our expertise.
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row items-center gap-4 mb-8">
+                            <a href="contact.html" class="btn-primary w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-calendar-check"></i> Book Free Consultation
+                            </a>
+                            <a href="tel:+18005550199" class="btn-outline w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 bg-background">
+                                <i class="fa-solid fa-phone"></i> +1 (800) 555-0199
+                            </a>
+                        </div>
+                        
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-secondary-text">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent"></i> Free Site Assessment</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent"></i> Transparent Pricing</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-accent"></i> 24/7 Support</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Image/Visual -->
+                    <div class="w-full lg:w-2/5 min-h-[300px] lg:h-auto self-stretch relative bg-slate-100 hidden sm:block">
+                        <img src="/asserts/services5.avif" alt="Expert Consultation" class="absolute inset-0 w-full h-full object-cover">
+                        <!-- Overlay gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-background via-transparent to-transparent"></div>
+                        
+                        <!-- Floating Badge -->
+                        <div class="absolute bottom-6 right-6 bg-background rounded-xl p-4 shadow-xl border border-border flex items-center gap-4 float-anim">
+                            <div class="w-12 h-12 rounded-full bg-accent-light text-accent flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-primary-text">4.9/5 Rating</div>
+                                <div class="text-xs text-secondary-text">From 500+ Clients</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER (UNCHANGED) ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-5">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link">+1 (800) 555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS (UNCHANGED) ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

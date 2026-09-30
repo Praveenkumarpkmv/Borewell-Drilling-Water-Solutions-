@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Water Solutions & Purification | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #3B82F6 !important; 
+        }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: var(--color-accent) !important;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+        @media (min-width: 1280px) {
+            .section-padding { padding: 7rem 4rem; }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .compare-bar {
+            height: 6px;
+            border-radius: 999px;
+            background: var(--color-hover);
+            overflow: hidden;
+        }
+        .compare-bar > div {
+            height: 100%;
+            border-radius: 999px;
+        }
+        .gallery-tile {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .gallery-tile img {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gallery-tile:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR ═══════════════ -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
+                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
+                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <!-- NOTE: no pt-[86px] — hero starts flush, header floats on top -->
+    <main class="flex-grow">
+
+        <!-- ═══════ SECTION 1: HERO (full-bleed behind header) ═══════ -->
+        <section class="relative w-full min-h-screen flex items-center overflow-hidden bg-slate-950">
+            <div class="absolute inset-0">
+                <img src="/asserts/home2-1.avif" alt="Clean water" class="w-full h-full object-cover opacity-35">
+                <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-blue-950/80 to-slate-950/95"></div>
+            </div>
+
+            <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 70px 70px;"></div>
+
+            <div class="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-blue-500/15 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 -right-32 w-[500px] h-[500px] bg-cyan-500/12 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 pb-20 w-full">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <span class="inline-flex items-center gap-2.5 px-5 py-2.5 mb-8 rounded-full bg-blue-500/15 backdrop-blur-md border border-blue-400/30 text-blue-100 text-xs sm:text-sm font-semibold tracking-[0.18em] uppercase">
+                            <i class="fa-solid fa-droplet"></i> Water Purification Experts
+                        </span>
+
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold leading-[1.05] mb-7 text-white tracking-tight">
+                            Clean Water.<br>
+                            <span class="text-blue-300 italic">Healthy Life.</span>
+                        </h1>
+
+                        <p class="text-base sm:text-lg md:text-xl text-blue-100/85 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-10">
+                            Advanced RO, UV, and softener systems engineered for Indian water conditions. Tested, certified, and installed by experts you can trust.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-14">
+                            <a href="contact.html" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-flask"></i> Free Water Test
+                            </a>
+                            <a href="services.html" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/60 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                                View Systems <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-x-8 gap-y-3 text-sm text-blue-100/70">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> ISO Certified Systems</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 5000+ Installations</span>
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 24/7 Support</span>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 hidden lg:block">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/30 to-blue-600/30 rounded-[2rem] rotate-6"></div>
+                            <div class="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-blue-900/40 rounded-[2rem] -rotate-3"></div>
+                            <div class="relative bg-white/[0.08] backdrop-blur-xl rounded-[2rem] border border-white/15 p-6 shadow-2xl">
+                                <div class="rounded-2xl overflow-hidden mb-5">
+                                    <img src="/asserts/home2-2.avif" alt="Water purification system" class="w-full h-[280px] object-cover">
+                                </div>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div>
+                                        <div class="text-white text-sm font-semibold uppercase tracking-wider">Water Quality</div>
+                                        <div class="text-blue-100/70 text-xs">Live monitoring</div>
+                                    </div>
+                                    <div class="text-3xl font-bold text-blue-200">99%</div>
+                                </div>
+                                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden mb-4">
+                                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width: 99%;"></div>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <div class="text-center">
+                                        <div class="text-xl font-bold text-white">42</div>
+                                        <div class="text-[10px] text-blue-100/60 uppercase tracking-wider mt-0.5">TDS ppm</div>
+                                    </div>
+                                    <div class="text-center border-x border-white/10">
+                                        <div class="text-xl font-bold text-white">7.2</div>
+                                        <div class="text-[10px] text-blue-100/60 uppercase tracking-wider mt-0.5">pH Level</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xl font-bold text-white">0</div>
+                                        <div class="text-[10px] text-blue-100/60 uppercase tracking-wider mt-0.5">Bacteria</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute -top-4 -right-4 bg-white rounded-2xl py-3 px-5 shadow-2xl border border-blue-100 float-anim">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-check text-green-600 text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-slate-900 font-bold text-xs">Pure Water</div>
+                                        <div class="text-slate-500 text-[10px]">Verified Daily</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 2: TRUST METRICS ═══════ -->
+        <section class="bg-hover border-y border-border">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+
+                    <div class="p-8 md:p-10 text-center card-hover">
+                        <div class="inline-flex w-14 h-14 rounded-2xl bg-accent-light items-center justify-center mb-4">
+                            <i class="fa-solid fa-tint text-2xl text-accent"></i>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-bold text-primary-text mb-1 stat-number">99.9%</div>
+                        <div class="text-sm text-secondary-text font-medium whitespace-nowrap">Impurity Removal</div>
+                    </div>
+
+                    <div class="p-8 md:p-10 text-center card-hover">
+                        <div class="inline-flex w-14 h-14 rounded-2xl bg-accent-light items-center justify-center mb-4">
+                            <i class="fa-solid fa-microscope text-2xl text-accent"></i>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-bold text-primary-text mb-1 stat-number">24</div>
+                        <div class="text-sm text-secondary-text font-medium whitespace-nowrap">Parameters Tested</div>
+                    </div>
+
+                    <div class="p-8 md:p-10 text-center card-hover">
+                        <div class="inline-flex w-14 h-14 rounded-2xl bg-accent-light items-center justify-center mb-4">
+                            <i class="fa-solid fa-house-chimney text-2xl text-accent"></i>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-bold text-primary-text mb-1 stat-number">5000+</div>
+                        <div class="text-sm text-secondary-text font-medium whitespace-nowrap">Homes Served</div>
+                    </div>
+
+                    <div class="p-8 md:p-10 text-center card-hover">
+                        <div class="inline-flex w-14 h-14 rounded-2xl bg-accent-light items-center justify-center mb-4">
+                            <i class="fa-solid fa-handshake text-2xl text-accent"></i>
+                        </div>
+                        <div class="text-3xl md:text-4xl font-bold text-primary-text mb-1 stat-number">98%</div>
+                        <div class="text-sm text-secondary-text font-medium whitespace-nowrap">Client Retention</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 3: SYSTEM COMPARISON ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Our Systems</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Find the Right Water Solution</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Compare our purification systems based on your water source and daily usage needs.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
+
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-filter text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-2">Basic UV</h3>
+                        <p class="text-secondary-text text-sm mb-6">Perfect for municipal water supply</p>
+                        <div class="text-3xl font-bold text-accent mb-6">₹8,999<span class="text-sm font-normal text-secondary-text"> / unit</span></div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> 5-stage UV purification</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> 8L storage tank</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> Removes bacteria &amp; viruses</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> 1-year warranty</li>
+                        </ul>
+                        <a href="contact.html" class="btn-outline w-full py-3 rounded-full font-bold text-sm flex items-center justify-center">
+                            Get This System
+                        </a>
+                    </div>
+
+                    <div class="bg-custom-gradient text-white rounded-2xl p-7 relative shadow-2xl md:scale-105 z-10 flex flex-col h-full">
+                        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-white text-blue-700 rounded-full px-4 py-1.5 text-xs font-bold tracking-wider uppercase shadow-lg whitespace-nowrap">Most Popular</div>
+                        <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-droplet text-2xl text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Standard RO+UV</h3>
+                        <p class="text-blue-100/85 text-sm mb-6">Best for borewell &amp; hard water</p>
+                        <div class="text-3xl font-bold mb-6">₹15,999<span class="text-sm font-normal text-blue-100/80"> / unit</span></div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1"></i> 7-stage RO+UV+TDS control</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1"></i> 12L food-grade storage</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1"></i> Removes iron, arsenic, fluoride</li>
+                            <li class="flex items-start gap-3 text-sm text-blue-50"><i class="fa-solid fa-check text-white mt-1"></i> Free installation &amp; 3-yr warranty</li>
+                        </ul>
+                        <a href="contact.html" class="btn-cta-white w-full py-3 rounded-full font-bold text-sm flex items-center justify-center">
+                            Get This System
+                        </a>
+                    </div>
+
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-crown text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-2">Premium RO+UV+Softener</h3>
+                        <p class="text-secondary-text text-sm mb-6">For commercial &amp; large families</p>
+                        <div class="text-3xl font-bold text-accent mb-6">₹28,999<span class="text-sm font-normal text-secondary-text"> / unit</span></div>
+                        <ul class="space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> 9-stage comprehensive purification</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> 25L copper tank</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> Built-in softener &amp; mineral boost</li>
+                            <li class="flex items-start gap-3 text-sm text-secondary-text"><i class="fa-solid fa-check text-accent mt-1"></i> AMC included for 1 year</li>
+                        </ul>
+                        <a href="contact.html" class="btn-outline w-full py-3 rounded-full font-bold text-sm flex items-center justify-center">
+                            Get This System
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 4: WATER QUALITY TEST RESULTS ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                    <div class="relative order-2 lg:order-1">
+                        <div class="rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="/asserts/home2-3.avif" alt="Water lab testing" class="w-full h-[420px] lg:h-[560px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-4 sm:-right-8 bg-custom-gradient text-white rounded-2xl p-5 sm:p-6 shadow-2xl float-anim max-w-[200px]">
+                            <div class="text-3xl sm:text-4xl font-bold">24</div>
+                            <div class="text-xs sm:text-sm text-blue-100 mt-1 leading-snug">Parameters analysed in every free water test.</div>
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-24 h-24 rounded-2xl bg-accent/10 -z-10"></div>
+                    </div>
+
+                    <div class="order-1 lg:order-2">
+                        <span class="text-accent font-bold text-sm tracking-widest uppercase">Know Your Water</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-5">What's Really In Your Water?</h2>
+                        <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-8">
+                            Most water issues are invisible. Our lab-grade testing reveals exactly what needs to be removed — so we design a system just for you.
+                        </p>
+
+                        <div class="space-y-5">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-virus text-red-500"></i>
+                                        <span class="text-sm font-bold text-primary-text">Bacteria &amp; Viruses</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-red-500 uppercase tracking-wider">68% Risk</span>
+                                </div>
+                                <div class="compare-bar">
+                                    <div style="width: 68%; background: linear-gradient(90deg, #EF4444, #DC2626);"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-cubes-stacked text-orange-500"></i>
+                                        <span class="text-sm font-bold text-primary-text">TDS &amp; Hardness</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-orange-500 uppercase tracking-wider">54% Risk</span>
+                                </div>
+                                <div class="compare-bar">
+                                    <div style="width: 54%; background: linear-gradient(90deg, #F97316, #EA580C);"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-atom text-yellow-600"></i>
+                                        <span class="text-sm font-bold text-primary-text">Iron &amp; Heavy Metals</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-yellow-600 uppercase tracking-wider">42% Risk</span>
+                                </div>
+                                <div class="compare-bar">
+                                    <div style="width: 42%; background: linear-gradient(90deg, #EAB308, #CA8A04);"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex items-center gap-2">
+                                        <i class="fa-solid fa-leaf text-green-600"></i>
+                                        <span class="text-sm font-bold text-primary-text">Essential Minerals</span>
+                                    </div>
+                                    <span class="text-xs font-bold text-green-600 uppercase tracking-wider">Good</span>
+                                </div>
+                                <div class="compare-bar">
+                                    <div style="width: 100%; background: linear-gradient(90deg, #22C55E, #16A34A);"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8 p-5 bg-background rounded-2xl border border-border">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-lightbulb text-xl text-accent"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold text-primary-text mb-1">Free Water Quality Test</div>
+                                    <p class="text-secondary-text text-sm leading-relaxed">We collect a sample from your tap and test it in our lab — no cost, no obligation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 5: RECENT INSTALLATIONS ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Recent Installations</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Our Work Across the City</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        A glimpse of the water systems we've installed for homes, farms, and businesses.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="gallery-tile aspect-square cursor-pointer">
+                        <img src="/asserts/home2-4.avif" alt="Residential RO system" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <div class="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Residential</div>
+                            <div class="text-sm font-bold">RO+UV System</div>
+                        </div>
+                    </div>
+                    <div class="gallery-tile aspect-square cursor-pointer">
+                        <img src="/asserts/home2-5.avif" alt="Farm submersible pump" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <div class="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Farm</div>
+                            <div class="text-sm font-bold">Submersible Pump</div>
+                        </div>
+                    </div>
+                    <div class="gallery-tile aspect-square cursor-pointer">
+                        <img src="/asserts/home2-6.avif" alt="Apartment water softener" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <div class="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Apartment</div>
+                            <div class="text-sm font-bold">Water Softener</div>
+                        </div>
+                    </div>
+                    <div class="gallery-tile aspect-square cursor-pointer">
+                        <img src="/asserts/home2-7.avif" alt="Industrial RO" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <div class="text-xs font-semibold uppercase tracking-wider text-blue-300 mb-1">Commercial</div>
+                            <div class="text-sm font-bold">Industrial RO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="areas.html" class="btn-outline inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold">
+                        View All Projects <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 6: CTA + FORM ═══════ -->
+        <section class="section-padding bg-custom-gradient relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+                <div class="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white"></div>
+            </div>
+            <div class="relative z-10 max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+                    <div class="text-white">
+                        <i class="fa-solid fa-flask text-5xl mb-6 opacity-90"></i>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight">Book Your Free Water Test Today</h2>
+                        <p class="text-base sm:text-lg text-blue-100/90 mb-10 leading-relaxed">
+                            Fill the form and our water expert will visit your home within 24 hours — test your water and recommend the perfect solution.
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-white"></i>
+                                </div>
+                                <span class="text-blue-50">100% Free • No obligation</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-white"></i>
+                                </div>
+                                <span class="text-blue-50">Lab-grade 24-parameter test</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-check text-white"></i>
+                                </div>
+                                <span class="text-blue-50">Same-day system recommendation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-background rounded-2xl p-7 sm:p-8 shadow-2xl border border-border">
+                        <h3 class="text-2xl font-bold text-primary-text mb-2">Schedule Free Water Test</h3>
+                        <p class="text-secondary-text text-sm mb-6">Takes less than 60 seconds.</p>
+
+                        <form class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-semibold text-primary-text mb-2">Full Name</label>
+                                <input type="text" placeholder="Enter your name" class="w-full p-3.5 rounded-xl bg-hover border border-border focus:border-accent focus:outline-none text-primary-text text-sm transition" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-primary-text mb-2">Phone Number</label>
+                                <input type="tel" placeholder="+91 98765 43210" class="w-full p-3.5 rounded-xl bg-hover border border-border focus:border-accent focus:outline-none text-primary-text text-sm transition" />
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-primary-text mb-2">Water Source</label>
+                                <select class="w-full p-3.5 rounded-xl bg-hover border border-border focus:border-accent focus:outline-none text-primary-text text-sm transition">
+                                    <option>Borewell</option>
+                                    <option>Municipal Supply</option>
+                                    <option>Well / Open Well</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-4 rounded-xl font-bold text-base shadow-md">
+                                <i class="fa-solid fa-paper-plane mr-2"></i> Book Free Test
+                            </button>
+                            <p class="text-xs text-secondary-text text-center pt-1">By submitting, you agree to our terms &amp; privacy policy.</p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER (IDENTICAL TO INDEX.HTML) ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-5">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link">+1 (800) 555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

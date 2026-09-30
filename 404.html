@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Page Not Found | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #64748B;
+            --color-accent: #2563EB;
+            --color-accent-light: #EFF6FF;
+            --color-border: #E2E8F0;
+            --color-hover: #F8FAFC;
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6;
+            --color-accent-light: #1E3A8A;
+            --color-border: #1E293B;
+            --color-hover: #0F172A;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 { font-weight: 500 !important;  }
+        p { font-weight: 400 !important; }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            inset-inline-start: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: inset-inline-start 0.5s ease;
+        }
+        .btn-primary:hover::before { inset-inline-start: 100%; }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -6px rgba(37, 99, 235, 0.5);
+        }
+        .btn-primary > * { position: relative; z-index: 1; }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 1.5px solid var(--color-accent);
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 10px 22px -6px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* ═══ 404 PAGE ═══ */
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .error-page::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            inset-inline-end: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .error-page::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            inset-inline-start: -10%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(6,182,212,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ═══ ANIMATED WAVES ═══ */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            inset-inline: 0;
+            height: 180px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .wave {
+            position: absolute;
+            bottom: 0;
+            inset-inline-start: 0;
+            width: 200%;
+            height: 100%;
+            border-radius: 45% 55% 0 0 / 20% 20% 0 0;
+        }
+        .wave-1 { background: rgba(59,130,246,0.12); animation: waveMotion 9s linear infinite; }
+        .wave-2 { background: rgba(96,165,250,0.15); animation: waveMotion 12s linear infinite reverse; }
+        .wave-3 { background: rgba(6,182,212,0.1); animation: waveMotion 15s linear infinite; }
+        @keyframes waveMotion {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ═══ FLOATING DROPLETS ═══ */
+        .droplet {
+            position: absolute;
+            color: var(--color-accent);
+            opacity: 0.15;
+            z-index: 1;
+            animation: floatUp 6s ease-in-out infinite;
+        }
+        @keyframes floatUp {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.3; }
+        }
+
+        /* ═══ BIG 404 NUMBER ═══ */
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(5rem, 15vw, 11rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 50%, #06B6D4 100%);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 6s ease infinite;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .drop-icon {
+            display: inline-block;
+            position: relative;
+            top: -0.05em;
+            font-size: 0.42em;
+            background: linear-gradient(180deg, #60A5FA 0%, #1E40AF 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: bob 2.5s ease-in-out infinite;
+        }
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ═══ ERROR CARD ═══ */
+        .error-card {
+            position: relative;
+            z-index: 3;
+            max-width: 46rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* ═══ QUICK LINK ═══ */
+        .quick-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 0.75rem;
+            border-radius: 1rem;
+            background: var(--color-background);
+            border: 1.5px solid var(--color-border);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+        .quick-link:hover {
+            border-color: var(--color-accent);
+            background: var(--color-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.25);
+        }
+        .quick-link-icon {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 0.85rem;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .quick-link:hover .quick-link-icon {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transform: scale(1.08);
+        }
+        .quick-link-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+        }
+
+        /* ═══ BRAND LOGO ═══ */
+        .brand-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--color-accent);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+            transition: transform 0.3s ease;
+        }
+        .brand-logo:hover { transform: scale(1.03); }
+        .brand-logo i { font-size: 1.55rem; }
+
+        /* ═══ PULSE DOT ═══ */
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.4; }
+        }
+        .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            display: inline-block;
+            animation: pulseDot 1.6s ease-in-out infinite;
+        }
+
+        /* ═══ CTRL BUTTONS (bigger & more visible) ═══ */
+        .top-controls {
+            position: fixed;
+            top: 1.5rem;
+            inset-inline-end: 1.5rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .ctrl-btn {
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.85rem;
+            border: 1.5px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-primary-text);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 12px -4px rgba(15, 23, 42, 0.08);
+        }
+        .ctrl-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: var(--color-hover);
+            transform: scale(1.05);
+        }
+        .ctrl-btn.active {
+            background: var(--color-accent);
+            color: #FFFFFF;
+            border-color: var(--color-accent);
+        }
+        .ctrl-btn.active:hover {
+            color: #FFFFFF;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 640px) {
+            .top-controls {
+                top: 1rem;
+                inset-inline-end: 1rem;
+            }
+            .ctrl-btn {
+                width: 2.75rem;
+                height: 2.75rem;
+                border-radius: 0.75rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        /* ═══ HELP CARD (text-start for RTL) ═══ */
+        .help-card {
+            background: var(--color-background);
+            border: 1.5px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: start;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .help-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -10px rgba(37, 99, 235, 0.2);
+        }
+        .help-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.75rem;
+            background: var(--color-accent-light);
+            color: var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        /* ═══ STAT BOX ═══ */
+        .stat-box {
+            background: var(--color-background);
+            border: 1.5px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 1rem 0.75rem;
+            text-align: center;
+            transition: all 0.25s ease;
+        }
+        .stat-box:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        /* ═══ ARROW ICONS — flip in RTL ═══ */
+        html[dir='rtl'] .flip-rtl {
+            transform: scaleX(-1);
+        }
+
+        /* ═══ DECORATIVE ELEMENTS — logical positioning ═══ */
+        .droplet-1 { top: 15%; inset-inline-start: 8%; font-size: 1.5rem; animation-delay: 0s; }
+        .droplet-2 { top: 25%; inset-inline-end: 12%; font-size: 1rem; animation-delay: 1.2s; }
+        .droplet-3 { bottom: 30%; inset-inline-start: 15%; font-size: 1.25rem; animation-delay: 2.4s; }
+        .droplet-4 { top: 60%; inset-inline-end: 20%; font-size: 0.85rem; animation-delay: 3.6s; }
+        .droplet-5 { top: 45%; inset-inline-start: 5%; font-size: 1.1rem; animation-delay: 1.8s; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ═══ ANIMATED WAVES ═══ -->
+    <div class="wave-container">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <!-- ═══ FLOATING DROPLETS ═══ -->
+    <i class="fa-solid fa-droplet droplet droplet-1"></i>
+    <i class="fa-solid fa-droplet droplet droplet-2"></i>
+    <i class="fa-solid fa-droplet droplet droplet-3"></i>
+    <i class="fa-solid fa-droplet droplet droplet-4"></i>
+    <i class="fa-solid fa-droplet droplet droplet-5"></i>
+
+    <!-- ═══ TOP CONTROLS (flips to top-left in RTL) ═══ -->
+    <div class="top-controls">
+        <button id="theme-toggle" class="ctrl-btn" aria-label="Toggle theme">
+            <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        </button>
+        <button id="lang-icon" class="ctrl-btn" aria-label="Toggle language" title="Toggle RTL/LTR">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main class="error-page">
+        <div class="error-card w-full">
+
+            <!-- Brand logo (centered) -->
+            <a href="index.html" class="brand-logo mb-8 block">
+                <i class="fa-solid fa-water"></i>
+                AQUADRILL
+            </a>
+
+            <!-- Error badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full bg-accent-light text-accent text-[11px] font-bold tracking-[0.18em] uppercase">
+                <span class="pulse-dot"></span>
+                Error 404 · Page Not Found
+            </div>
+
+            <!-- Big 404 -->
+            <div class="error-code mb-5">
+                4<i class="fa-solid fa-droplet drop-icon mx-2"></i>4
+            </div>
+
+            <!-- Headline -->
+            <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight text-primary-text">
+                Looks like this page <span class="italic text-accent">ran dry.</span>
+            </h1>
+
+            <!-- Description -->
+            <p class="text-secondary-text text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-10">
+                The page you're looking for has been moved, deleted, or never existed. Let's get you back to familiar waters.
+            </p>
+
+            <!-- Action buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+                <a href="index.html" class="btn-primary w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-sm shadow-md flex items-center justify-center gap-2.5">
+                    <span class="flex items-center gap-2.5">
+                        <i class="fa-solid fa-house"></i> Back to Home
+                    </span>
+                </a>
+                <a href="contact.html" class="btn-outline w-full sm:w-auto px-7 py-3.5 rounded-full font-bold text-sm flex items-center justify-center gap-2.5">
+                    <i class="fa-solid fa-headset"></i> Contact Support
+                </a>
+            </div>
+
+            <!-- Popular destinations -->
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-secondary-text mb-5">
+                Popular Destinations
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-14">
+                <a href="services.html" class="quick-link">
+                    <div class="quick-link-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                    <span class="quick-link-label">Services</span>
+                </a>
+                <a href="process.html" class="quick-link">
+                    <div class="quick-link-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                    <span class="quick-link-label">Our Process</span>
+                </a>
+                <a href="areas.html" class="quick-link">
+                    <div class="quick-link-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <span class="quick-link-label">Areas</span>
+                </a>
+                <a href="about.html" class="quick-link">
+                    <div class="quick-link-icon"><i class="fa-solid fa-users"></i></div>
+                    <span class="quick-link-label">About Us</span>
+                </a>
+            </div>
+
+            <!-- Help / Troubleshooting section -->
+            <p class="text-xs font-bold uppercase tracking-[0.18em] text-secondary-text mb-5">
+                Maybe This Happened?
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-14">
+                <div class="help-card">
+                    <div class="help-icon"><i class="fa-solid fa-link-slash"></i></div>
+                    <h3 class="font-bold text-primary-text mb-1.5 text-sm">Broken Link</h3>
+                    <p class="text-secondary-text text-xs leading-relaxed">
+                        The URL may have a typo or the page was moved to a new address.
+                    </p>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon"><i class="fa-solid fa-box-archive"></i></div>
+                    <h3 class="font-bold text-primary-text mb-1.5 text-sm">Removed Page</h3>
+                    <p class="text-secondary-text text-xs leading-relaxed">
+                        We may have retired or replaced this page during a recent update.
+                    </p>
+                </div>
+                <div class="help-card">
+                    <div class="help-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h3 class="font-bold text-primary-text mb-1.5 text-sm">Old Bookmark</h3>
+                    <p class="text-secondary-text text-xs leading-relaxed">
+                        Your bookmark might point to an outdated version of this site.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fun stats / trust row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                <div class="stat-box">
+                    <div class="text-2xl font-bold text-accent mb-1">2500+</div>
+                    <div class="text-[10px] text-secondary-text font-semibold uppercase tracking-wider">Projects Done</div>
+                </div>
+                <div class="stat-box">
+                    <div class="text-2xl font-bold text-accent mb-1">15+</div>
+                    <div class="text-[10px] text-secondary-text font-semibold uppercase tracking-wider">Years Experience</div>
+                </div>
+                <div class="stat-box">
+                    <div class="text-2xl font-bold text-accent mb-1">24/7</div>
+                    <div class="text-[10px] text-secondary-text font-semibold uppercase tracking-wider">Support</div>
+                </div>
+                <div class="stat-box">
+                    <div class="text-2xl font-bold text-accent mb-1">98%</div>
+                    <div class="text-[10px] text-secondary-text font-semibold uppercase tracking-wider">Success Rate</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open')?.addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close')?.addEventListener('click', closeDrawer);
+            menuBackdrop?.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn && btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn && btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+
+</body>
+</html>

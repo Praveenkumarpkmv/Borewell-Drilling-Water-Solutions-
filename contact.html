@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Contact Us | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #3B82F6 !important; 
+        }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: var(--color-accent) !important;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+        @media (min-width: 1280px) {
+            .section-padding { padding: 7rem 4rem; }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Contact hero */
+        .hero-contact {
+            background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(30,58,138,0.88) 50%, rgba(15,23,42,0.95) 100%), url('/asserts/contact1.avif') center/cover no-repeat;
+        }
+
+        /* Contact info card */
+        .contact-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3B82F6, #1E3A8A);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(37,99,235,0.12);
+            border-color: var(--color-accent);
+        }
+        .contact-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Form input */
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border-radius: 0.75rem;
+            background: var(--color-hover);
+            border: 1.5px solid var(--color-border);
+            color: var(--color-primary-text);
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.25s ease;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: var(--color-background);
+            box-shadow: 0 0 0 4px rgba(59,130,246,0.1);
+        }
+        .form-input::placeholder {
+            color: var(--color-secondary-text);
+            opacity: 0.6;
+        }
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            margin-bottom: 0.5rem;
+        }
+        select.form-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+            padding-right: 3rem;
+        }
+
+        /* Success message */
+        .success-msg {
+            display: none;
+            padding: 1rem 1.25rem;
+            border-radius: 0.75rem;
+            background: #DCFCE7;
+            border: 1px solid #86EFAC;
+            color: #15803D;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .success-msg.show {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Map container */
+        .map-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: var(--color-hover);
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR (IDENTICAL TO INDEX.HTML) ═══════════════ -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
+                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
+                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER (IDENTICAL TO INDEX.HTML) ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT — CONTACT ═══════════════ -->
+    <main class="flex-grow">
+
+                <!-- ═══════ SECTION 1: CONTACT HERO ═══════ -->
+        <section class="relative w-full pt-32 pb-20 overflow-hidden bg-background border-b border-border">
+            <!-- Decorative blobs -->
+            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
+                <div class="text-center max-w-3xl mx-auto">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-light text-accent mb-6 shadow-lg shadow-accent/20">
+                        <i class="fa-regular fa-comments text-2xl"></i>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-text mb-6 tracking-tight">
+                        Let's Talk About <br class="hidden sm:block"> Your Water Needs.
+                    </h1>
+                    <p class="text-secondary-text text-lg sm:text-xl leading-relaxed mb-0">
+                        Need a site survey? Have questions about our drilling rigs? Want a free quote? We are here to help. Reach out to our certified engineers today.
+                    </p>
+                </div>
+            </div>
+        </section><!-- ═══════ SECTION 2: CONTACT METHODS (3 Quick Cards) ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Reach Us</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Three Ways to Connect</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Pick whichever is fastest for you — all channels are monitored 24/7.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- Phone -->
+                    <div class="contact-card">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
+                            <i class="fa-solid fa-phone text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-2">Call Us</h3>
+                        <p class="text-secondary-text text-sm mb-5">Available 24/7 for urgent enquiries and emergencies.</p>
+                        <a href="tel:+18005550199" class="text-accent font-bold text-lg hover:text-blue-700 transition"><span class="whitespace-nowrap">+1 (800) 555-0199</span></a>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-card">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
+                            <i class="fa-solid fa-envelope text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-2">Email Us</h3>
+                        <p class="text-secondary-text text-sm mb-5">For quotes, partnerships, and detailed project enquiries.</p>
+                        <a href="mailto:info@aquadrill.com" class="text-accent font-bold text-lg hover:text-blue-700 transition">info@aquadrill.com</a>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <div class="contact-card">
+                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
+                            <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary-text mb-2">WhatsApp</h3>
+                        <p class="text-secondary-text text-sm mb-5">Send photos of your site for a faster, more accurate quote.</p>
+                        <a href="#" class="text-accent font-bold text-lg hover:text-blue-700 transition">Chat with us →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+     <!-- ═══════ SECTION 3: SITE VISIT FORM (Main Section) ═══════ -->
+<section class="section-padding bg-hover">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+            <!-- Left: Info -->
+            <div>
+
+                <!-- Intro -->
+                <div>
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Book a Site Visit</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-5">Free Site Visit &amp; Quote</h2>
+                    <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-8">
+                        Fill out the form and our team will call you within 24 hours to schedule a free site visit. No charges, no obligation.
+                    </p>
+                </div>
+
+                <!-- 3 Steps -->
+                <div class="space-y-5 mb-10">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-phone text-xl text-accent"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary-text mb-1">Step 1: We Call You</h4>
+                            <p class="text-secondary-text text-sm">Confirm your details and answer any initial questions.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-map-location-dot text-xl text-accent"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary-text mb-1">Step 2: Free Site Visit</h4>
+                            <p class="text-secondary-text text-sm">Our engineer inspects your site and analyses water requirements.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-file-invoice-dollar text-xl text-accent"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-primary-text mb-1">Step 3: Detailed Quote</h4>
+                            <p class="text-secondary-text text-sm">You receive a fixed, itemised quote — no hidden charges, ever.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What's Included -->
+                <div class="bg-background rounded-2xl p-6 border border-border mb-6">
+                    <h3 class="font-bold text-primary-text mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-circle-check text-accent"></i> What's Included — Free of Charge
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Physical site inspection
+                        </div>
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Water table analysis
+                        </div>
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Drilling point recommendation
+                        </div>
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Fixed itemised quotation
+                        </div>
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Pump sizing advice
+                        </div>
+                        <div class="flex items-start gap-2.5 text-sm text-secondary-text">
+                            <i class="fa-solid fa-check text-accent mt-0.5 shrink-0"></i> Purification options
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trust Stats Row -->
+                <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
+                    <div class="bg-background rounded-2xl p-2 sm:p-4 border border-border text-center">
+                        <div class="text-lg sm:text-2xl font-bold text-accent mb-1 whitespace-nowrap">2500+</div>
+                        <div class="text-[11px] text-secondary-text font-medium uppercase tracking-wider">Projects Done</div>
+                    </div>
+                    <div class="bg-background rounded-2xl p-2 sm:p-4 border border-border text-center">
+                        <div class="text-lg sm:text-2xl font-bold text-accent mb-1 whitespace-nowrap">24 hrs</div>
+                        <div class="text-[11px] text-secondary-text font-medium uppercase tracking-wider">Response</div>
+                    </div>
+                    <div class="bg-background rounded-2xl p-2 sm:p-4 border border-border text-center">
+                        <div class="text-lg sm:text-2xl font-bold text-accent mb-1 whitespace-nowrap">15+ yrs</div>
+                        <div class="text-[11px] text-secondary-text font-medium uppercase tracking-wider">Experience</div>
+                    </div>
+                </div>
+
+                <!-- Security note -->
+                <div class="bg-background rounded-2xl p-6 border border-border mb-6">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 rounded-full bg-green-100 dark:bg-green-950/40 flex items-center justify-center">
+                            <i class="fa-solid fa-shield-halved text-green-600"></i>
+                        </div>
+                        <div class="font-bold text-primary-text text-sm">Your information is 100% secure</div>
+                    </div>
+                    <p class="text-secondary-text text-xs leading-relaxed">We never share or sell your details. Your data is only used to contact you about your water project.</p>
+                </div>
+
+                <!-- Prefer to skip? -->
+                <div class="pt-6 border-t border-border">
+                    
+                </div>
+
+            </div>
+
+            <!-- Right: Form -->
+            <div class="bg-background rounded-3xl p-7 sm:p-9 border border-border shadow-xl">
+                <div class="mb-6">
+                    <h3 class="text-2xl font-bold text-primary-text mb-1">Site Visit Request</h3>
+                    <p class="text-secondary-text text-sm">Takes less than 60 seconds.</p>
+                </div>
+
+                <!-- Success message -->
+                <div class="success-msg" id="successMsg">
+                    <i class="fa-solid fa-circle-check text-lg"></i>
+                    <span>Thank you! We'll call you within 24 hours to schedule your site visit.</span>
+                </div>
+
+                <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label class="form-label">Phone Number *</label>
+                            <input type="tel" class="form-input" placeholder="+91 98765 43210" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-input" placeholder="you@example.com">
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                            <label class="form-label">Service Required *</label>
+                            <select class="form-input" required>
+                                <option value="">Select service</option>
+                                <option>Borewell Drilling</option>
+                                <option>Pump Installation</option>
+                                <option>Water Purification (RO/UV)</option>
+                                <option>AMC &amp; Maintenance</option>
+                                <option>Complete Package</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Water Source *</label>
+                            <select class="form-input" required>
+                                <option value="">Select source</option>
+                                <option>Borewell</option>
+                                <option>Municipal Supply</option>
+                                <option>Well / Open Well</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="form-label">City / Area *</label>
+                        <input type="text" class="form-input" placeholder="E.g. Mumbai, Andheri West" required>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Tell Us About Your Project</label>
+                        <textarea class="form-input" rows="4" placeholder="E.g. Need a borewell for a 3-bedroom house, sandy soil..."></textarea>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <input type="checkbox" id="agree" class="mt-1 w-4 h-4 accent-blue-600" required>
+                        <label for="agree" class="text-xs text-secondary-text leading-relaxed cursor-pointer">I agree to be contacted by AQUADRILL regarding my enquiry. I understand this is not a confirmed booking.</label>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full py-4 rounded-xl font-bold text-base shadow-md flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Request Free Site Visit
+                    </button>
+
+                    <p class="text-xs text-secondary-text text-center">Or call us directly at <a href="tel:+18005550199" class="text-accent font-bold"><span class="whitespace-nowrap">+1 (800) 555-0199</span></a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+        <!-- ═══════ SECTION 4: OFFICE / MAP ═══════ -->
+<section class="section-padding bg-background">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="text-accent font-bold text-sm tracking-widest uppercase">Visit Us</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Our Head Office</h2>
+            <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                Drop by for a coffee and a chat — we'd love to meet you.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:items-stretch">
+
+            <!-- Google Map -->
+            <div class="lg:col-span-3">
+                <div class="relative rounded-3xl overflow-hidden border border-border shadow-2xl h-[520px] lg:h-full lg:min-h-[520px]">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.2147477757414!2d-73.98847928459366!3d40.75731397932674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0; display:block; position:absolute; inset:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="AQUADRILL Head Office Location">
+                    </iframe>
+
+                    <!-- Floating HQ info card -->
+                    <div class="absolute bottom-4 left-4 right-4 sm:right-auto sm:max-w-xs bg-background/95 backdrop-blur-md rounded-xl p-4 border border-border shadow-xl">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="w-9 h-9 rounded-lg bg-custom-gradient flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-building text-white text-sm"></i>
+                            </div>
+                            <div class="text-sm font-bold text-primary-text">AQUADRILL HQ</div>
+                        </div>
+                        <p class="text-xs text-secondary-text leading-relaxed">45 Borewell Road, Water District, WD 560001</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Office details -->
+            <div class="lg:col-span-2">
+                <div class="bg-background rounded-3xl border border-border shadow-xl overflow-hidden flex flex-col h-full lg:min-h-[520px]">
+
+                    <!-- Business Hours Row -->
+                    <div class="p-6 sm:p-7 border-b border-border hover:bg-hover transition-colors duration-300 flex flex-col justify-center flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-clock text-accent"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-primary-text text-base mb-0.5">Business Hours</h3>
+                                <p class="text-xs text-secondary-text mb-4">Mon – Sat · Local time</p>
+
+                                <div class="space-y-3">
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-secondary-text text-xs sm:text-sm whitespace-nowrap">Mon – Fri</span>
+                                        <span class="font-bold text-primary-text text-xs sm:text-sm whitespace-nowrap">9:00 AM – 7:00 PM</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-secondary-text text-xs sm:text-sm whitespace-nowrap">Saturday</span>
+                                        <span class="font-bold text-primary-text text-xs sm:text-sm whitespace-nowrap">10:00 AM – 5:00 PM</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-sm">
+                                        <span class="text-secondary-text text-xs sm:text-sm whitespace-nowrap">Sunday</span>
+                                        <span class="text-[10px] sm:text-xs font-bold text-accent bg-accent-light px-2.5 py-1 rounded-full whitespace-nowrap">Emergency Only</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address Row -->
+                    <div class="p-6 sm:p-7 border-b border-border hover:bg-hover transition-colors duration-300 flex flex-col justify-center flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-accent-light flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-location-dot text-accent"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-primary-text text-base mb-0.5">Head Office</h3>
+                                <p class="text-xs text-secondary-text mb-4">Visit us in person</p>
+
+                                <p class="text-sm text-secondary-text leading-relaxed mb-4">
+                                    45 Borewell Road,<br>
+                                    Water District, WD 560001
+                                </p>
+
+                                <a href="https://www.google.com/maps/dir/?api=1&destination=Times+Square+New+York" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:gap-3 transition-all">
+                                    Get Directions <i class="fa-solid fa-arrow-right text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emergency Row -->
+                    <div class="p-6 sm:p-7 bg-accent-light/40 dark:bg-blue-950/20 flex flex-col justify-center flex-1">
+                        <div class="flex items-start gap-4">
+                            <div class="w-11 h-11 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0 shadow-md shadow-blue-600/25">
+                                <i class="fa-solid fa-headset text-white"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <h3 class="font-bold text-primary-text text-base mb-0.5">24/7 Emergency</h3>
+                                <p class="text-xs text-secondary-text mb-3">Always available — we answer 24/7</p>
+
+                                <a href="tel:+18005550199" class="inline-block text-xl font-bold text-accent hover:text-blue-700 transition tracking-tight">
+                                    <span class="whitespace-nowrap">+1 (800) 555-0199</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+        <!-- ═══════ SECTION 5: FAQ ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Common Questions</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Before You Reach Out</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Answers to the questions we hear most often before starting a project.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-background rounded-2xl border border-border p-6 card-hover">
+                        <h3 class="font-bold text-primary-text mb-2 text-lg">Is the site visit really free?</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Yes — 100% free. Our engineer visits your location, analyses the site, and gives you an honest recommendation. There's no obligation to proceed.</p>
+                    </div>
+
+                    <div class="bg-background rounded-2xl border border-border p-6 card-hover">
+                        <h3 class="font-bold text-primary-text mb-2 text-lg">How quickly will I hear back?</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">We call back within 24 hours on business days, and usually within a couple of hours for urgent enquiries submitted through the form.</p>
+                    </div>
+
+                    <div class="bg-background rounded-2xl border border-border p-6 card-hover">
+                        <h3 class="font-bold text-primary-text mb-2 text-lg">What information should I have ready?</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Ideally: your location (city + area), approximate number of people using water, current water source, and any previous borewell information if available. A couple of site photos help too.</p>
+                    </div>
+
+                    <div class="bg-background rounded-2xl border border-border p-6 card-hover">
+                        <h3 class="font-bold text-primary-text mb-2 text-lg">Do you handle emergency repairs?</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">Yes — we have a 24/7 emergency line for pump failures, water pressure drops, and other urgent issues. Call directly for the fastest response.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <!-- ═══════ SECTION 6: CTA ═══════ -->
+        <section class="py-24 relative overflow-hidden bg-background">
+            <!-- Modern Gradient Mesh Background -->
+            <div class="absolute inset-0 opacity-40 dark:opacity-20 pointer-events-none">
+                <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 rounded-full mix-blend-multiply filter blur-[100px]"></div>
+                <div class="absolute bottom-0 left-10 w-[600px] h-[600px] bg-cyan-400/20 rounded-full mix-blend-multiply filter blur-[120px]"></div>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+                <div class="flex flex-col items-center justify-center text-center mb-12">
+                    <div class="mx-auto flex items-center justify-center w-20 h-20 rounded-full bg-accent text-white shadow-xl shadow-accent/40 mb-8 animate-bounce">
+                        <i class="fa-solid fa-phone-volume text-3xl"></i>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 text-primary-text leading-tight text-center w-full">
+                        Prefer to Talk <span class="text-accent">Right Now?</span>
+                    </h2>
+                    <p class="text-secondary-text text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed">
+                        Skip the forms. Give us a ring and speak directly to a certified engineer. No call centers, no wait times — just real answers.
+                    </p>
+                </div>
+
+                <!-- Dual Action Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <!-- Call Card -->
+                    <a href="tel:+18005550199" class="group relative bg-background rounded-2xl p-5 border border-border shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden text-center block hover:-translate-y-2">
+                        <div class="absolute inset-0 bg-accent-light opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-primary-text mb-2 group-hover:text-accent transition-colors">Immediate Support</h3>
+                            <div class="text-xl sm:text-2xl lg:text-3xl font-extrabold text-accent tracking-tight my-3 group-hover:scale-105 transition-transform duration-300">
+                                <span class="whitespace-nowrap">+1 (800) 555-0199</span>
+                            </div>
+                            <p class="text-secondary-text font-medium flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-headset text-accent"></i> 24/7 Availability • Real Engineers
+                            </p>
+                        </div>
+                    </a>
+
+                    <!-- Email Card -->
+                    <a href="mailto:info@aquadrill.com" class="group relative bg-background rounded-2xl p-5 border border-border shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden text-center block hover:-translate-y-2">
+                        <div class="absolute inset-0 bg-cyan-50 dark:bg-cyan-900/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10">
+                            <h3 class="text-xl font-bold text-primary-text mb-2 group-hover:text-cyan-500 transition-colors">Detailed Inquiries</h3>
+                            <div class="text-lg sm:text-xl lg:text-2xl font-extrabold text-primary-text tracking-tight my-3 group-hover:scale-105 transition-transform duration-300">
+                                info@aquadrill.com
+                            </div>
+                            <p class="text-secondary-text font-medium flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-envelope text-cyan-500"></i> Average response time: 2 hours
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER (IDENTICAL TO INDEX.HTML) ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-5">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link"><span class="whitespace-nowrap">+1 (800) 555-0199</span></a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <title>Borewell Drilling Experts | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ── Modern Professional Blue Palette (Original) ── */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        /* ── Typography Weight System ── */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+            
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+            line-height: 1.75;
+        }
+
+        /* Rich Gradient */
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #3B82F6 !important; 
+        }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        /* Nav Link */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: var(--color-accent) !important;
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* ── Canonical Button System ── */
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        /* ── Page Specific ── */
+        .hero-drill {
+            background: linear-gradient(135deg, rgba(30,58,138,0.92) 0%, rgba(37,99,235,0.85) 100%), url('/asserts/index1.avif') center/cover no-repeat;
+        }
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+        @media (min-width: 1280px) {
+            .section-padding { padding: 7rem 4rem; }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR ═══════════════ -->
+    <!-- FIX: Outer wrapper is full-width transparent; inner pill has background -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
+                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
+                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="flex-grow">
+
+        <!-- ═══════ SECTION 1: HERO ═══════ -->
+        <section class="hero-drill relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
+            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 pb-20 text-center text-white">
+                <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-400/40 text-blue-100 text-sm font-semibold tracking-wide uppercase">
+                    <i class="fa-solid fa-bore-hole mr-2"></i> Borewell Drilling Experts
+                </span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+                    Deep Drilling.<br>
+                    <span class="text-blue-300">Pure Water.</span>
+                </h1>
+                <p class="text-base sm:text-lg md:text-xl text-blue-50/90 max-w-2xl mx-auto leading-relaxed mb-10">
+                    Rugged, dependable borewell drilling services for homes, farms, and industries. We drill deeper, faster, and with absolute precision — so you never run dry.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="contact.html" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i> Book a Site Visit
+                    </a>
+                    <a href="services.html" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/60 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-right"></i> Our Services
+                    </a>
+                </div>
+
+                <!-- Floating Stats -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 mt-16 max-w-3xl mx-auto">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                        <div class="text-2xl sm:text-3xl font-bold text-blue-200 stat-number">15+</div>
+                        <div class="text-xs sm:text-sm text-blue-100/80 mt-1">Years Drilling</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                        <div class="text-2xl sm:text-3xl font-bold text-blue-200 stat-number">2500+</div>
+                        <div class="text-xs sm:text-sm text-blue-100/80 mt-1">Borewells Drilled</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                        <div class="text-2xl sm:text-3xl font-bold text-blue-200 stat-number">98%</div>
+                        <div class="text-xs sm:text-sm text-blue-100/80 mt-1">Success Rate</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-white/20">
+                        <div class="text-2xl sm:text-3xl font-bold text-blue-200 stat-number">24/7</div>
+                        <div class="text-xs sm:text-sm text-blue-100/80 mt-1">Support</div>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-white/60 hidden sm:block">
+                <i class="fa-solid fa-chevron-down text-2xl"></i>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 2: DRILLING EXPERTISE ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Our Expertise</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Mastering the Art of Borewell Drilling</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Every inch of ground is different. That's why we bring rugged rigs, geological insight, and decades of hands-on experience to every project.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-bore-hole text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">Rotary & DTH Drilling</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            We deploy both rotary and down-the-hole hammer rigs to cut through hard rock, sand, and clay with maximum efficiency.
+                        </p>
+                    </div>
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-mountain text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">Geological Survey</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            Before drilling, we study the terrain and aquifers to identify the most productive water veins beneath your land.
+                        </p>
+                    </div>
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-gauge-high text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">High-Yield Output</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            Our precision drilling techniques maximize water yield, ensuring your borewell delivers for years to come.
+                        </p>
+                    </div>
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-helmet-safety text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">Certified Crew</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            Our drilling teams are fully certified, safety-trained, and equipped with modern rigs and protective gear.
+                        </p>
+                    </div>
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-ruler-combined text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">Precision Depth Control</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            From 100 to 1500+ feet, we drill to the exact depth required to hit reliable, sustainable water sources.
+                        </p>
+                    </div>
+                    <div class="bg-hover rounded-2xl p-7 border border-border card-hover">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-clock text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text">On-Time Completion</h3>
+                        <p class="text-secondary-text text-sm leading-relaxed">
+                            We respect your time. Most residential borewells are drilled and completed within 24–48 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 3: WHY CHOOSE US (SPLIT) ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div class="relative">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="/asserts/index2.avif" alt="Borewell drilling rig in action" class="w-full h-[400px] lg:h-[550px] object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 -right-4 sm:-right-8 bg-custom-gradient text-white rounded-2xl p-5 sm:p-6 shadow-2xl float-anim max-w-[200px]">
+                            <div class="text-3xl sm:text-4xl font-bold">15+</div>
+                            <div class="text-xs sm:text-sm text-blue-100 mt-1 leading-snug">Years of Trusted Drilling Experience</div>
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-24 h-24 rounded-2xl bg-accent/10 -z-10"></div>
+                    </div>
+
+                    <div>
+                        <span class="text-accent font-bold text-sm tracking-widest uppercase">Why AQUADRILL</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-6">Built Rugged. Delivered Reliable.</h2>
+                        <p class="text-secondary-text text-base sm:text-lg leading-relaxed mb-8">
+                            When you need water, you need it done right the first time. We combine heavy-duty equipment with a meticulous approach — no shortcuts, no guesswork.
+                        </p>
+
+                        <div class="space-y-5">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-accent-light flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Free Site Assessment</h4>
+                                    <p class="text-secondary-text text-sm">We visit your location, analyze the terrain, and give you an honest recommendation — free of charge.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-accent-light flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Transparent Pricing</h4>
+                                    <p class="text-secondary-text text-sm">No hidden charges. You get a detailed quote before we start drilling — and we stick to it.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-accent-light flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Complete Water Solutions</h4>
+                                    <p class="text-secondary-text text-sm">From drilling to pump installation and pipeline setup — we handle the entire process end-to-end.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-accent-light flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-check text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Post-Drilling Support</h4>
+                                    <p class="text-secondary-text text-sm">We stand behind our work. If you face any issue, our support team responds within 24 hours.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="about.html" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold mt-9 shadow-md">
+                            Learn More About Us <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 4: DRILLING PROCESS (REDESIGNED) ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">How We Drill</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Our Borewell Drilling Process</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        A clear, proven four-step process that takes you from dry land to a flowing borewell.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="relative pt-6">
+                        <div class="absolute top-0 left-6 w-12 h-12 rounded-xl bg-custom-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg z-10 border-4 border-background">1</div>
+                        <div class="bg-hover rounded-2xl p-7 pt-12 border border-border card-hover h-full">
+                            <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-map-location-dot text-2xl text-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-primary-text">Site Survey</h3>
+                            <p class="text-secondary-text text-sm leading-relaxed">
+                                We assess your land, study water tables, and pinpoint the best drilling spot.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="relative pt-6">
+                        <div class="absolute top-0 left-6 w-12 h-12 rounded-xl bg-custom-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg z-10 border-4 border-background">2</div>
+                        <div class="bg-hover rounded-2xl p-7 pt-12 border border-border card-hover h-full">
+                            <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-gears text-2xl text-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-primary-text">Rig Setup</h3>
+                            <p class="text-secondary-text text-sm leading-relaxed">
+                                Heavy-duty rigs are positioned and prepped for safe, efficient drilling.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="relative pt-6">
+                        <div class="absolute top-0 left-6 w-12 h-12 rounded-xl bg-custom-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg z-10 border-4 border-background">3</div>
+                        <div class="bg-hover rounded-2xl p-7 pt-12 border border-border card-hover h-full">
+                            <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-bore-hole text-2xl text-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-primary-text">Deep Drilling</h3>
+                            <p class="text-secondary-text text-sm leading-relaxed">
+                                We drill to the required depth, casing the borewell to prevent collapse.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="relative pt-6">
+                        <div class="absolute top-0 left-6 w-12 h-12 rounded-xl bg-custom-gradient text-white flex items-center justify-center font-bold text-lg shadow-lg z-10 border-4 border-background">4</div>
+                        <div class="bg-hover rounded-2xl p-7 pt-12 border border-border card-hover h-full">
+                            <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                                <i class="fa-solid fa-faucet-drip text-2xl text-accent"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-primary-text">Pump & Test</h3>
+                            <p class="text-secondary-text text-sm leading-relaxed">
+                                We install the pump, test water yield, and hand over a fully working borewell.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 5: TESTIMONIALS ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Client Stories</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Trusted by Thousands</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Real feedback from homeowners, farmers, and businesses who now have reliable water.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic">
+                            "They drilled 800 feet and hit a strong water vein on the first try. The team was professional, fast, and cleaned up everything afterward. Highly recommended."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-accent-light flex items-center justify-center font-bold text-accent">RS</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Rajesh Sharma</div>
+                                <div class="text-secondary-text text-xs">Homeowner, Jaipur</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic">
+                            "We needed a borewell for our farm urgently. AQUADRILL completed the job in under 36 hours. The water yield is excellent and the pricing was fair."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-accent-light flex items-center justify-center font-bold text-accent">MP</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Meena Patel</div>
+                                <div class="text-secondary-text text-xs">Farm Owner, Gujarat</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover">
+                        <div class="flex gap-1 text-yellow-400 mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-secondary-text text-sm leading-relaxed mb-6 italic">
+                            "From the free site visit to the final pump installation, everything was smooth. They explained each step and delivered exactly what they promised."
+                        </p>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-full bg-accent-light flex items-center justify-center font-bold text-accent">AK</div>
+                            <div>
+                                <div class="font-bold text-primary-text text-sm">Arun Kumar</div>
+                                <div class="text-secondary-text text-xs">Builder, Chennai</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 6: CTA / CONTACT ═══════ -->
+        <section class="section-padding bg-custom-gradient relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+                <div class="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center text-white">
+                <i class="fa-solid fa-bore-hole text-5xl mb-6 opacity-90"></i>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight">Ready to Drill Your Borewell?</h2>
+                <p class="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Get a free site assessment today. Our drilling experts will visit your location, analyze the terrain, and give you a clear, no-obligation quote.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="contact.html" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i> Schedule Free Site Visit
+                    </a>
+                    <a href="tel:+18005550199" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/60 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> +1 (800) 555-0199
+                    </a>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-12 text-sm text-blue-100/80">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Free Site Assessment</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> No Hidden Charges</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 24/7 Support</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-5">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link">+1 (800) 555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

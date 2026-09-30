@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Sign In | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #0F172A;
+            --color-secondary-text: #64748B;
+            --color-accent: #2563EB;
+            --color-accent-hover: #1D4ED8;
+            --color-accent-light: #EFF6FF;
+            --color-border: #E2E8F0;
+            --color-hover: #F8FAFC;
+        }
+        html[data-theme='dark'] {
+            --color-background: #0F172A;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6;
+            --color-accent-hover: #60A5FA;
+            --color-accent-light: #1E3A8A;
+            --color-border: #1E293B;
+            --color-hover: #1E293B;
+        }
+
+        * { -webkit-tap-highlight-color: transparent; }
+
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 { font-weight: 500 !important;  }
+        p { font-weight: 400 !important; }
+
+        /* ═══ AUTH PAGE LAYOUT ═══ */
+        .auth-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-page::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .auth-page::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* ═══ AUTH SHELL ═══ */
+        .auth-shell {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 62rem;
+            background: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow:
+                0 25px 60px -25px rgba(15, 23, 42, 0.25),
+                0 0 0 1px rgba(255,255,255,0.03) inset;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 1024px) {
+            .auth-shell {
+                grid-template-columns: 1.05fr 1fr;
+                min-height: 660px;
+            }
+        }
+
+        /* ═══ IMAGE SIDE ═══ */
+        .auth-image {
+            position: relative;
+            display: none;
+            background:
+                linear-gradient(135deg, rgba(15,23,42,0.88) 0%, rgba(30,58,138,0.78) 60%, rgba(15,23,42,0.92) 100%),
+                url('/asserts/login1.avif');
+            background-size: cover;
+            background-position: center;
+            padding: 2.5rem;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            overflow: hidden;
+        }
+        @media (min-width: 1024px) {
+            .auth-image { display: flex; }
+        }
+
+        .auth-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+        }
+
+        .auth-image::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(96,165,250,0.25) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .auth-image-logo {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+        }
+        .auth-image-logo i {
+            color: #93C5FD;
+            font-size: 1.1rem;
+        }
+
+        .auth-image-content {
+            position: relative;
+            z-index: 2;
+            max-width: 24rem;
+        }
+
+        .auth-image-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.45rem 1rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #FFFFFF;
+            margin-bottom: 1.75rem;
+        }
+
+        .auth-image-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            animation: pulseDot 1.6s ease-in-out infinite;
+        }
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.4); opacity: 0.5; }
+        }
+
+        .auth-image-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 700 !important;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
+            
+            color: #FFFFFF;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+        .auth-image-content h2 .accent-italic {
+            font-style: italic;
+            color: #FFFFFF;
+        }
+        .auth-image-content p {
+            font-size: 0.95rem;
+            color: #FFFFFF;
+            line-height: 1.7;
+            margin-bottom: 1.75rem;
+            text-shadow: 0 1px 12px rgba(0,0,0,0.3);
+            font-weight: 400 !important;
+        }
+
+        .auth-image-features {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .auth-image-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            font-size: 0.9rem;
+            color: #FFFFFF;
+            font-weight: 500;
+        }
+        .auth-image-feature i {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.6rem;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #FFFFFF;
+            flex-shrink: 0;
+        }
+
+        .auth-image-quote {
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 1rem;
+            padding: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+        .auth-image-quote img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.4);
+            flex-shrink: 0;
+        }
+        .auth-image-quote .stars {
+            display: flex;
+            gap: 2px;
+            color: #FBBF24;
+            font-size: 0.65rem;
+            margin-bottom: 0.35rem;
+        }
+        .auth-image-quote p {
+            font-size: 0.8rem;
+            color: #FFFFFF;
+            line-height: 1.5;
+            margin: 0;
+            text-shadow: none;
+            font-weight: 500 !important;
+        }
+        .auth-image-quote span {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.85);
+            display: block;
+            margin-top: 0.2rem;
+        }
+
+        /* ═══ FORM SIDE ═══ */
+        .auth-form-side {
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        @media (min-width: 640px) {
+            .auth-form-side {
+                padding: 2.5rem 2.75rem;
+            }
+        }
+
+        /* ═══ FORM FIELDS ═══ */
+        .field-label {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        .field-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid var(--color-border);
+            background: var(--color-hover);
+            color: var(--color-primary-text);
+            font-size: 0.9rem;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            font-family: inherit;
+            line-height: 1.4;
+        }
+        .field-input::placeholder {
+            color: var(--color-secondary-text);
+            opacity: 0.7;
+        }
+        .field-input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: var(--color-background);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+        html[data-theme='dark'] .field-input:focus {
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+        }
+        .field-input.has-icon {
+            padding-right: 2.75rem;
+        }
+        .field-icon-btn {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-secondary-text);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.375rem;
+            border-radius: 0.375rem;
+            transition: color 0.15s, background 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+        .field-icon-btn:hover {
+            color: var(--color-accent);
+            background: var(--color-hover);
+        }
+
+        /* ═══ SOCIAL BUTTONS ═══ */
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-primary-text);
+            font-weight: 600;
+            font-size: 0.8125rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+        .social-btn:hover {
+            background: var(--color-hover);
+            border-color: var(--color-accent);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px -6px rgba(37, 99, 235, 0.25);
+        }
+        .social-btn.google i { color: #EA4335; }
+        .social-btn.apple i { color: var(--color-primary-text); }
+
+        /* ═══ DIVIDER ═══ */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-secondary-text);
+            font-size: 0.6875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin: 1.25rem 0;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--color-border);
+        }
+
+        /* ═══ PRIMARY BUTTON ═══ */
+        .btn-auth-primary {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-auth-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        .btn-auth-primary:hover::before {
+            left: 100%;
+        }
+        .btn-auth-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgba(37, 99, 235, 0.5);
+        }
+        .btn-auth-primary:active {
+            transform: translateY(0);
+        }
+
+        /* ═══ CHECKBOX ═══ */
+        .checkbox {
+            appearance: none;
+            width: 1.05rem;
+            height: 1.05rem;
+            border-radius: 0.3rem;
+            border: 1.5px solid var(--color-border);
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.15s ease;
+            margin-top: 0.0625rem;
+            position: relative;
+            background: var(--color-background);
+        }
+        .checkbox:hover {
+            border-color: var(--color-accent);
+        }
+        .checkbox:checked {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        .checkbox:checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 5px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        /* ═══ TOP BAR CONTROLS ═══ */
+        .ctrl-btn {
+            width: 2.15rem;
+            height: 2.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.55rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-primary-text);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-size: 0.9rem;
+        }
+        .ctrl-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: var(--color-hover);
+        }
+
+        /* Back link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-secondary-text);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Success toast */
+        .success-toast {
+            display: none;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            background: #DCFCE7;
+            border: 1px solid #86EFAC;
+            color: #15803D;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+        .success-toast.show {
+            display: flex;
+            animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        html[data-theme='dark'] .success-toast {
+            background: rgba(34,197,94,0.12);
+            border-color: rgba(34,197,94,0.3);
+            color: #4ADE80;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile-only compact hero band */
+        @media (max-width: 1023px) {
+            .auth-shell { max-width: 26rem; }
+            .mobile-hero {
+                display: flex;
+                background:
+                    linear-gradient(135deg, rgba(15,23,42,0.92) 0%, rgba(30,58,138,0.85) 100%),
+                    url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200&auto=format&fit=crop');
+                background-size: cover;
+                background-position: center;
+                padding: 1.5rem;
+                color: white;
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .mobile-hero .logo {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 1.1rem;
+                font-weight: 800;
+                color: #FFFFFF;
+                text-decoration: none;
+                font-family: 'Playfair Display', serif;
+            }
+            .mobile-hero .logo i { color: #93C5FD; }
+            .mobile-hero h2 {
+                font-family: 'Playfair Display', serif;
+                font-size: 1.35rem;
+                font-weight: 700 !important;
+                line-height: 1.25;
+                color: #FFFFFF;
+                text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            }
+            .mobile-hero h2 .accent-italic {
+                font-style: italic;
+                color: #FFFFFF;
+            }
+        }
+        @media (min-width: 1024px) {
+            .mobile-hero { display: none; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="auth-page">
+        <div class="auth-shell">
+
+            <!-- ═══ LEFT: Image side (desktop only) ═══ -->
+            <div class="auth-image">
+                <a href="index.html" class="auth-image-logo">
+                    <i class="fa-solid fa-water"></i>
+                    AQUADRILL
+                </a>
+
+                <div class="auth-image-content">
+                    <span class="auth-image-badge">
+                        <span class="dot"></span>
+                        Client Portal
+                    </span>
+                    <h2>Welcome back to your <span class="accent-italic">dashboard.</span></h2>
+                    <p>Manage your ongoing drilling projects, check hydro-survey reports, and schedule follow-up maintenance instantly.</p>
+
+                    <div class="auth-image-features">
+                        <div class="auth-image-feature">
+                            <i class="fa-solid fa-chart-line"></i>
+                            <span>Real-time project tracking</span>
+                        </div>
+                        <div class="auth-image-feature">
+                            <i class="fa-solid fa-file-lines"></i>
+                            <span>Instant report downloads</span>
+                        </div>
+                        <div class="auth-image-feature">
+                            <i class="fa-solid fa-headset"></i>
+                            <span>24/7 priority support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="auth-image-quote">
+                    <img src="/asserts/login2.avif" alt="Client" loading="lazy">
+                    <div>
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <p>"Hit abundant water on the first point drilled. Highly professional team."</p>
+                        <span>— Ramesh K., agricultural client</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ RIGHT: Form side ═══ -->
+            <div class="auth-form-side">
+
+                <!-- Mobile compact hero -->
+                <div class="mobile-hero -mx-7 -mt-8 mb-6 sm:-mx-11">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-water"></i>
+                        AQUADRILL
+                    </a>
+                    <h2>Welcome back to your <span class="accent-italic">dashboard.</span></h2>
+                </div>
+
+                <!-- Top: back + theme + lang -->
+                <div class="flex items-center justify-between mb-7">
+                    <a href="index.html" class="back-link">
+                        <i class="fa-solid fa-arrow-left text-[0.65rem]"></i>
+                        Back to home
+                    </a>
+                    <div class="flex items-center gap-2">
+                        <button id="theme-toggle" class="ctrl-btn" aria-label="Toggle theme">
+                            <svg class="w-4 h-4 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            <svg class="w-4 h-4 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                        </button>
+                        <button id="lang-icon" class="ctrl-btn" aria-label="Toggle language">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Heading -->
+                <div class="mb-7">
+                    <h1 class="font-display text-2xl sm:text-3xl font-bold tracking-tight mb-2 text-primary-text">
+                        Sign in to your account
+                    </h1>
+                    <p class="text-secondary-text text-sm">
+                        Enter your credentials to access your client portal.
+                    </p>
+                </div>
+
+                <!-- Social buttons -->
+                <div class="grid grid-cols-2 gap-3 mb-1">
+                    <button class="social-btn google" type="button">
+                        <i class="fa-brands fa-google"></i>
+                        Google
+                    </button>
+                    <button class="social-btn apple" type="button">
+                        <i class="fa-brands fa-apple"></i>
+                        Apple
+                    </button>
+                </div>
+
+                <div class="divider">or continue with email</div>
+
+                <!-- Form -->
+                <form id="signin-form" class="space-y-4">
+                    <div>
+                        <label class="field-label" for="signin-email">Email or phone number</label>
+                        <input id="signin-email" type="text" required placeholder="you@example.com / +91 98765 43210" class="field-input" autocomplete="email">
+                    </div>
+
+                    <div>
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="field-label mb-0" for="signin-password">Password</label>
+                            <a href="#" class="text-xs font-semibold text-accent hover:underline">Forgot password?</a>
+                        </div>
+                        <div class="relative">
+                            <input id="signin-password" type="password" required placeholder="Enter your password" class="field-input has-icon" autocomplete="current-password">
+                            <button type="button" class="field-icon-btn" id="toggle-password" aria-label="Toggle password visibility">
+                                <i class="fa-regular fa-eye" id="toggle-password-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2.5 text-sm text-secondary-text pt-1">
+                        <input type="checkbox" id="remember-me" class="checkbox">
+                        <label for="remember-me" class="cursor-pointer select-none">Remember this device</label>
+                    </div>
+
+                    <button type="submit" class="btn-auth-primary mt-2">
+                        <span>Sign in</span>
+                        <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </button>
+
+                    <div id="form-status" class="success-toast">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span>Signed in successfully! Redirecting...</span>
+                    </div>
+                </form>
+
+                <!-- Signup link -->
+                <p class="text-center text-secondary-text text-sm mt-7">
+                    Don't have an account?
+                    <a href="signup.html" class="text-accent font-bold hover:underline">Create account</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open')?.addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close')?.addEventListener('click', closeDrawer);
+            menuBackdrop?.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn && btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn && btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>

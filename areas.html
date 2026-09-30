@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/fav.png" type="image/jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Service Areas | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 500 !important;
+        }
+        p, .text-secondary-text {
+            font-weight: 400 !important;
+        }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #3B82F6 !important; 
+        }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+        }
+        .nav-link:hover {
+            color: var(--color-accent) !important;
+        }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        .section-padding {
+            padding: 5rem 1rem;
+        }
+        @media (min-width: 768px) {
+            .section-padding { padding: 6rem 2rem; }
+        }
+        @media (min-width: 1280px) {
+            .section-padding { padding: 7rem 4rem; }
+        }
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+        }
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+        .float-anim {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-areas {
+            background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(30,58,138,0.88) 50%, rgba(15,23,42,0.95) 100%), url('/asserts/areas1.avif') center/cover no-repeat;
+        }
+
+        .pulse-dot {
+            position: relative;
+            display: inline-block;
+        }
+        .pulse-dot::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: rgba(59,130,246,0.35);
+            animation: pulse-ring 2s ease-out infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.7); opacity: 0.8; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        .area-cover {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .area-cover img {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .area-cover:hover img {
+            transform: scale(1.08);
+        }
+
+        .map-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: var(--color-hover);
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+        .map-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--color-accent);
+            box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .map-dot:hover {
+            transform: scale(1.4);
+            box-shadow: 0 0 0 8px rgba(59,130,246,0.25);
+        }
+        .map-dot::after {
+            content: attr(data-city);
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-primary-text);
+            color: var(--color-background);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+        .map-dot:hover::after {
+            opacity: 1;
+        }
+
+        /* New city pill style */
+        .city-pill {
+            display: block;
+            text-align: center;
+            padding: 0.6rem 0.5rem;
+            border-radius: 0.75rem;
+            background: var(--color-hover);
+            border: 1px solid var(--color-border);
+            color: var(--color-primary-text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+        .city-pill:hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37,99,235,0.25);
+        }
+
+        .coverage-stat {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            border: 1px solid var(--color-border);
+            padding: 1.75rem 1.25rem;
+            text-align: center;
+            background: var(--color-background);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .coverage-stat:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-accent);
+            box-shadow: 0 20px 40px rgba(37,99,235,0.12);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR ═══════════════ -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
+                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
+                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
+                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <main class="flex-grow">
+
+                                <!-- ═══════ SECTION 1: AREAS HERO ═══════ -->
+        <section class="hero-areas relative w-full pt-32 pb-24 overflow-hidden border-b border-border">
+            <!-- Glassmorphic overlay for extreme legibility -->
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+            
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 text-blue-300 text-sm font-bold tracking-wide uppercase mb-8 shadow-sm border border-blue-500/30 backdrop-blur-md">
+                    <i class="fa-solid fa-earth-asia"></i> Coverage Zone
+                </div>
+                
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-8 tracking-tight drop-shadow-lg">
+                    Drilling Across <br class="hidden sm:block"> The <span class="text-blue-400">Entire Region.</span>
+                </h1>
+                
+                <p class="text-blue-50 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto mb-16 drop-shadow-md">
+                    From dense metropolitan cities to remote agricultural farms, our heavy-duty rigs and expert teams cover over 45 districts. Wherever you are, we can deploy.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="text-5xl font-extrabold text-blue-400 mb-3 drop-shadow">45+</div>
+                        <div class="text-blue-100 font-bold uppercase tracking-widest text-xs">Districts Covered</div>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="text-5xl font-extrabold text-blue-400 mb-3 drop-shadow">15</div>
+                        <div class="text-blue-100 font-bold uppercase tracking-widest text-xs">Active Rigs</div>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/10 shadow-2xl transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="text-5xl font-extrabold text-blue-400 mb-3 drop-shadow">24/7</div>
+                        <div class="text-blue-100 font-bold uppercase tracking-widest text-xs">Deployment Ready</div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- ═══════ SECTION 2: INTERACTIVE MAP + HIGHLIGHTS ═══════ -->
+        <section id="map-section" class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Coverage Map</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Where We Operate</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Every dot below represents an active service zone. Hover to see the city name.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-center">
+                    <div class="lg:col-span-3 h-full flex flex-col justify-center bg-background rounded-3xl p-8 sm:p-12 border border-border shadow-2xl relative overflow-hidden group">
+                        <!-- Decorative subtle background -->
+                        <div class="absolute -top-24 -right-24 w-64 h-64 bg-accent/5 rounded-full blur-[80px] pointer-events-none"></div>
+                        
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-bold tracking-wide uppercase mb-8 self-start border border-accent/20">
+                            <i class="fa-solid fa-layer-group"></i> Coverage Sectors
+                        </div>
+                        
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary-text mb-10 leading-tight">
+                            Engineered for Every <span class="text-accent">Terrain.</span>
+                        </h2>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                            
+                            <!-- Sector 1 -->
+                            <div class="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-hover border border-transparent hover:border-border transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                                <div class="w-12 h-12 rounded-xl bg-background border border-border text-accent flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-city text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Urban Metro</h4>
+                                    <p class="text-secondary-text text-sm leading-relaxed">Compact rigs designed for tight residential spaces.</p>
+                                </div>
+                            </div>
+
+                            <!-- Sector 2 -->
+                            <div class="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-hover border border-transparent hover:border-border transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                                <div class="w-12 h-12 rounded-xl bg-background border border-border text-accent flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-industry text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Industrial Belts</h4>
+                                    <p class="text-secondary-text text-sm leading-relaxed">High-yield, large diameter drilling for factories.</p>
+                                </div>
+                            </div>
+
+                            <!-- Sector 3 -->
+                            <div class="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-hover border border-transparent hover:border-border transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                                <div class="w-12 h-12 rounded-xl bg-background border border-border text-accent flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-tractor text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Agricultural</h4>
+                                    <p class="text-secondary-text text-sm leading-relaxed">Deep aquifer tapping for heavy irrigation demands.</p>
+                                </div>
+                            </div>
+
+                            <!-- Sector 4 -->
+                            <div class="flex items-start gap-4 p-4 sm:p-5 rounded-2xl bg-hover border border-transparent hover:border-border transition-all duration-300 hover:shadow-md hover:-translate-y-1">
+                                <div class="w-12 h-12 rounded-xl bg-background border border-border text-accent flex items-center justify-center shrink-0 shadow-sm">
+                                    <i class="fa-solid fa-mountain-sun text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-primary-text mb-1">Hard Rock</h4>
+                                    <p class="text-secondary-text text-sm leading-relaxed">Pneumatic DTH drilling for impenetrable surfaces.</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="bg-hover rounded-2xl p-6 border border-border card-hover">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-bolt text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary-text">24 hrs</div>
+                                    <div class="text-sm text-secondary-text">Average response</div>
+                                </div>
+                            </div>
+                            <p class="text-secondary-text text-sm leading-relaxed">From your enquiry to on-site team arrival in most covered cities.</p>
+                        </div>
+
+                        <div class="bg-hover rounded-2xl p-6 border border-border card-hover">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-road text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary-text">150 km</div>
+                                    <div class="text-sm text-secondary-text">Radius coverage</div>
+                                </div>
+                            </div>
+                            <p class="text-secondary-text text-sm leading-relaxed">We travel up to 150 km from each regional hub for remote locations.</p>
+                        </div>
+
+                        <div class="bg-hover rounded-2xl p-6 border border-border card-hover">
+                            <div class="flex items-center gap-4 mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-people-group text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-primary-text">12 teams</div>
+                                    <div class="text-sm text-secondary-text">Regional crews</div>
+                                </div>
+                            </div>
+                            <p class="text-secondary-text text-sm leading-relaxed">Distributed teams ensure no delay — even during peak season.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 3: REGIONS BY STATE ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">By State</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Regions We Cover</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Four primary states form our operational core. Find your state and explore the covered cities.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5 shrink-0">
+                            <i class="fa-solid fa-city text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary-text">Maharashtra</h3>
+                        <p class="text-secondary-text text-sm mb-6 flex-grow">Mumbai, Pune, Nagpur, Nashik, Aurangabad</p>
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mt-auto pt-5 border-t border-border">
+                            <span class="w-2 h-2 rounded-full bg-accent"></span> 5 Cities Covered
+                        </div>
+                    </div>
+
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5 shrink-0">
+                            <i class="fa-solid fa-city text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary-text">Karnataka</h3>
+                        <p class="text-secondary-text text-sm mb-6 flex-grow">Bangalore, Mangalore, Mysore, Hubli</p>
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mt-auto pt-5 border-t border-border">
+                            <span class="w-2 h-2 rounded-full bg-accent"></span> 4 Cities Covered
+                        </div>
+                    </div>
+
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5 shrink-0">
+                            <i class="fa-solid fa-city text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary-text">Telangana</h3>
+                        <p class="text-secondary-text text-sm mb-6 flex-grow">Hyderabad, Warangal, Karimnagar</p>
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mt-auto pt-5 border-t border-border">
+                            <span class="w-2 h-2 rounded-full bg-accent"></span> 3 Cities Covered
+                        </div>
+                    </div>
+
+                    <div class="bg-background rounded-2xl p-7 border border-border card-hover flex flex-col h-full">
+                        <div class="w-14 h-14 rounded-xl bg-accent-light flex items-center justify-center mb-5 shrink-0">
+                            <i class="fa-solid fa-city text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2 text-primary-text">Gujarat</h3>
+                        <p class="text-secondary-text text-sm mb-6 flex-grow">Ahmedabad, Surat, Vadodara, Rajkot</p>
+                        <div class="flex items-center gap-2 text-xs font-bold text-accent uppercase tracking-wider mt-auto pt-5 border-t border-border">
+                            <span class="w-2 h-2 rounded-full bg-accent"></span> 4 Cities Covered
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 4: FEATURED CITY CARDS ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Featured Cities</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Where We're Most Active</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Our busiest regions with the highest density of completed projects.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Mumbai -->
+                    <div class="area-cover group aspect-[4/5] cursor-pointer">
+                        <img src="/asserts/areas2.avif" alt="Mumbai" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-7 text-white">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="pulse-dot w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+                                <span class="text-xs font-bold uppercase tracking-widest text-green-300">Currently Active</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Mumbai</h3>
+                            <p class="text-blue-100/80 text-sm mb-4 min-h-[60px] md:min-h-[80px]">450+ borewells & water systems installed across the city.</p>
+                            <a href="contact.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-300 group-hover:gap-3 transition-all">
+                                Book in Mumbai <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bangalore -->
+                    <div class="area-cover group aspect-[4/5] cursor-pointer">
+                        <img src="/asserts/areas3.avif" alt="Bangalore" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-7 text-white">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="pulse-dot w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+                                <span class="text-xs font-bold uppercase tracking-widest text-green-300">Currently Active</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Bangalore</h3>
+                            <p class="text-blue-100/80 text-sm mb-4 min-h-[60px] md:min-h-[80px]">380+ projects completed for homes, tech parks, and apartments.</p>
+                            <a href="contact.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-300 group-hover:gap-3 transition-all">
+                                Book in Bangalore <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hyderabad -->
+                    <div class="area-cover group aspect-[4/5] cursor-pointer">
+                        <img src="/asserts/areas4.avif" alt="Hyderabad" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-7 text-white">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="pulse-dot w-2.5 h-2.5 bg-green-400 rounded-full"></span>
+                                <span class="text-xs font-bold uppercase tracking-widest text-green-300">Currently Active</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Hyderabad</h3>
+                            <p class="text-blue-100/80 text-sm mb-4 min-h-[60px] md:min-h-[80px]">290+ installations with dedicated 24/7 service team.</p>
+                            <a href="contact.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-300 group-hover:gap-3 transition-all">
+                                Book in Hyderabad <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 5: COVERAGE STATS + ALL CITIES (REDESIGNED) ═══════ -->
+        <section class="section-padding bg-hover">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Full Coverage</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">All Cities We Serve</h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
+                        Browse our complete list of covered cities. Don't see yours? Contact us — we may still reach you.
+                    </p>
+                </div>
+
+                <!-- Stats row -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-14">
+                    <div class="coverage-stat">
+                        <div class="text-4xl font-bold text-accent mb-2 stat-number">45+</div>
+                        <div class="text-sm text-secondary-text font-medium">Cities Covered</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="text-4xl font-bold text-accent mb-2 stat-number">8</div>
+                        <div class="text-sm text-secondary-text font-medium">States</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="text-4xl font-bold text-accent mb-2 stat-number">150km</div>
+                        <div class="text-sm text-secondary-text font-medium">Max Radius</div>
+                    </div>
+                    <div class="coverage-stat">
+                        <div class="text-4xl font-bold text-accent mb-2 stat-number">24h</div>
+                        <div class="text-sm text-secondary-text font-medium">Response Time</div>
+                    </div>
+                </div>
+
+                <!-- Cities grouped in cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                    <!-- Maharashtra -->
+                    <div class="bg-background rounded-2xl border border-border p-7 card-hover">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0 shadow-md shadow-blue-600/25">
+                                    <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-primary-text">Maharashtra</h3>
+                                    <p class="text-xs text-secondary-text font-medium uppercase tracking-wider">8 Cities</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-accent bg-accent-light px-3 py-1.5 rounded-full">West</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                            <span class="city-pill">Mumbai</span>
+                            <span class="city-pill">Pune</span>
+                            <span class="city-pill">Nagpur</span>
+                            <span class="city-pill">Nashik</span>
+                            <span class="city-pill">Aurangabad</span>
+                            <span class="city-pill">Thane</span>
+                            <span class="city-pill">Navi Mumbai</span>
+                            <span class="city-pill">Kolhapur</span>
+                        </div>
+                    </div>
+
+                    <!-- Karnataka -->
+                    <div class="bg-background rounded-2xl border border-border p-7 card-hover">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0 shadow-md shadow-blue-600/25">
+                                    <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-primary-text">Karnataka</h3>
+                                    <p class="text-xs text-secondary-text font-medium uppercase tracking-wider">6 Cities</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-accent bg-accent-light px-3 py-1.5 rounded-full">South</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                            <span class="city-pill">Bangalore</span>
+                            <span class="city-pill">Mangalore</span>
+                            <span class="city-pill">Mysore</span>
+                            <span class="city-pill">Hubli</span>
+                            <span class="city-pill">Belgaum</span>
+                            <span class="city-pill">Davangere</span>
+                        </div>
+                    </div>
+
+                    <!-- Telangana -->
+                    <div class="bg-background rounded-2xl border border-border p-7 card-hover">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0 shadow-md shadow-blue-600/25">
+                                    <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-primary-text">Telangana</h3>
+                                    <p class="text-xs text-secondary-text font-medium uppercase tracking-wider">4 Cities</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-accent bg-accent-light px-3 py-1.5 rounded-full">South</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                            <span class="city-pill">Hyderabad</span>
+                            <span class="city-pill">Warangal</span>
+                            <span class="city-pill">Karimnagar</span>
+                            <span class="city-pill">Nizamabad</span>
+                        </div>
+                    </div>
+
+                    <!-- Gujarat & Other -->
+                    <div class="bg-background rounded-2xl border border-border p-7 card-hover">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center shrink-0 shadow-md shadow-blue-600/25">
+                                    <i class="fa-solid fa-location-dot text-white text-lg"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-primary-text">Gujarat &amp; Other</h3>
+                                    <p class="text-xs text-secondary-text font-medium uppercase tracking-wider">8 Cities</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-bold text-accent bg-accent-light px-3 py-1.5 rounded-full">Multi</span>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                            <span class="city-pill">Ahmedabad</span>
+                            <span class="city-pill">Surat</span>
+                            <span class="city-pill">Vadodara</span>
+                            <span class="city-pill">Rajkot</span>
+                            <span class="city-pill">Chennai</span>
+                            <span class="city-pill">Vizag</span>
+                            <span class="city-pill">Indore</span>
+                            <span class="city-pill">Kochi</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 6: CTA ═══════ -->
+        <section class="section-padding bg-custom-gradient relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+                <div class="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center text-white">
+                <i class="fa-solid fa-map-location-dot text-5xl mb-6 opacity-90"></i>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight">Don't See Your City?</h2>
+                <p class="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    We expand coverage frequently. Send us your location — we'll tell you the nearest service team and next available slot.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="contact.html" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-location-crosshairs"></i> Check My Area
+                    </a>
+                    <a href="tel:+18005550199" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/60 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> +1 (800) 555-0199
+                    </a>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-12 text-sm text-blue-100/80">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Free Site Assessment</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 24-Hour Response</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 150 km Radius</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-5">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link">+1 (800) 555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordions
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // Theme & RTL
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Active Nav Logic
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+        });
+    </script>
+</body>
+</html>
