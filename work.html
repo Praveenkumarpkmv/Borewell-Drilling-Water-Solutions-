@@ -258,25 +258,30 @@
         .stat-chip {
             display: flex;
             flex-direction: column;
-            padding: 0.85rem 1rem;
+            padding: 0.75rem 0.5rem;
             border-radius: 0.85rem;
             background: var(--color-hover);
             border: 1px solid var(--color-border);
+            white-space: nowrap;
+            
+            text-align: left;
         }
         .stat-chip-value {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            font-size: 1.35rem;
+            font-size: 1.25rem; /* slightly smaller to fit better */
             color: var(--color-accent);
             line-height: 1;
+            white-space: nowrap;
         }
         .stat-chip-label {
             font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em; /* reduce tracking slightly to fit */
             color: var(--color-secondary-text);
             margin-top: 0.4rem;
+            white-space: nowrap;
         }
 
         /* Filter pills */
@@ -520,7 +525,7 @@
                                     Three previous contractors had drilled dry wells on this plot. Our geological survey identified a different aquifer line — 620 feet down, we hit water on the first attempt.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">620 ft</span><span class="stat-chip-label">Depth</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">5 HP</span><span class="stat-chip-label">Pump</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">48 hr</span><span class="stat-chip-label">Delivery</span></div>
@@ -552,7 +557,7 @@
                                     A growing family needed reliable water for daily use plus landscaping. We delivered a full solution — borewell, pump, overhead tank, softener, and RO — all within 72 hours.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">450 ft</span><span class="stat-chip-label">Depth</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">1.5 HP</span><span class="stat-chip-label">Pump</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">72 hr</span><span class="stat-chip-label">Delivery</span></div>
@@ -584,7 +589,7 @@
                                     A 90-room hotel needed commercial-grade purification that could handle peak load without downtime. We designed and installed a dual-train RO system with automatic changeover and remote monitoring.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">2000 L</span><span class="stat-chip-label">Per Hour</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">Dual</span><span class="stat-chip-label">RO Train</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">UV+RO</span><span class="stat-chip-label">Stages</span></div>
@@ -616,7 +621,7 @@
                                     The apartment association needed one centralized system to serve 32 families. We installed a shared commercial RO with auto-flush, plus a whole-building softener and 5000 LPD storage with level control.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">32</span><span class="stat-chip-label">Families</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">5000 L</span><span class="stat-chip-label">Storage</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">Shared</span><span class="stat-chip-label">Softener</span></div>
@@ -648,7 +653,7 @@
                                     A dairy farm with 120 cattle needed constant water to 4 sheds. We drilled a 500-ft borewell, installed a 3HP pump, built an overhead tank, and ran full pipeline distribution to every shed with automated levels.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">500 ft</span><span class="stat-chip-label">Depth</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">3 HP</span><span class="stat-chip-label">Pump</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">4</span><span class="stat-chip-label">Sheds</span></div>
@@ -680,7 +685,7 @@
                                     A textile factory required 40,000 L per day for cooling and processing. We drilled to 800 ft, installed a 10HP industrial pump, and set up an inline industrial RO system with real-time TDS monitoring.
                                 </p>
 
-                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                                <div class="grid grid-cols-2 gap-3 mb-6">
                                     <div class="stat-chip"><span class="stat-chip-value">800 ft</span><span class="stat-chip-label">Depth</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">10 HP</span><span class="stat-chip-label">Pump</span></div>
                                     <div class="stat-chip"><span class="stat-chip-value">40K L</span><span class="stat-chip-label">Per Day</span></div>
@@ -724,7 +729,7 @@
                         <div class="w-14 h-14 rounded-2xl bg-custom-gradient flex items-center justify-center mb-6 shadow-lg shadow-blue-600/25">
                             <i class="fa-solid fa-map-location-dot text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-primary-text">Site Survey First</h4>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text min-h-[3.5rem]">Site Survey First</h3>
                         <p class="text-secondary-text text-sm leading-relaxed">Every project begins with a geological study. No drilling until we know exactly where the water is.</p>
                     </div>
 
@@ -733,7 +738,7 @@
                         <div class="w-14 h-14 rounded-2xl bg-custom-gradient flex items-center justify-center mb-6 shadow-lg shadow-blue-600/25">
                             <i class="fa-solid fa-file-invoice-dollar text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-primary-text">Fixed Quotes</h4>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text min-h-[3.5rem]">Fixed Quotes</h3>
                         <p class="text-secondary-text text-sm leading-relaxed">Your quote is your quote. No mid-project surprises. Everything is itemised before we start.</p>
                     </div>
 
@@ -742,7 +747,7 @@
                         <div class="w-14 h-14 rounded-2xl bg-custom-gradient flex items-center justify-center mb-6 shadow-lg shadow-blue-600/25">
                             <i class="fa-solid fa-clipboard-check text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-primary-text">Documented Delivery</h4>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text min-h-[3.5rem]">Documented Delivery</h3>
                         <p class="text-secondary-text text-sm leading-relaxed">Depth logs, yield test reports, warranty cards — you get everything in writing.</p>
                     </div>
 
@@ -751,7 +756,7 @@
                         <div class="w-14 h-14 rounded-2xl bg-custom-gradient flex items-center justify-center mb-6 shadow-lg shadow-blue-600/25">
                             <i class="fa-solid fa-headset text-white text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-primary-text">Long-Term Support</h4>
+                        <h3 class="text-xl font-bold mb-3 text-primary-text min-h-[3.5rem]">Long-Term Support</h3>
                         <p class="text-secondary-text text-sm leading-relaxed">We don't disappear after handover. AMC plans and 24/7 support keep your system running for years.</p>
                     </div>
                 </div>
