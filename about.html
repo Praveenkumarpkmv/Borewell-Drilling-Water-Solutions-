@@ -81,6 +81,7 @@
             transition: color 0.3s;
             padding: 0.5rem 0.75rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--color-accent) !important;
@@ -220,7 +221,7 @@
         }
         /* About hero bg — full-bleed behind the floating navbar */
         .hero-about {
-            background: linear-gradient(135deg, rgba(30,58,138,0.95) 0%, rgba(37,99,235,0.88) 100%), url('asserts/about1.avif') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(30,58,138,0.88) 50%, rgba(15,23,108,0.95) 100%), url('asserts/about1.avif') center/cover no-repeat;
         }
     </style>
 </head>
@@ -234,8 +235,8 @@
     <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
 </a>
 
-            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
-                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+            <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                <div class="flex xl:space-x-1 2xl:space-x-4 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
                     <div class="dropdown-wrapper">
                         <button class="nav-link flex items-center" id="home-dropdown-btn">
                             Home
@@ -250,6 +251,8 @@
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="process.html" class="nav-link">Our Process</a>
                     <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="work.html" class="nav-link">Our Work</a>
+                    <a href="quote.html" class="nav-link">Get a Quote</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -266,8 +269,9 @@
                         </svg>
                     </button>
                     <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
-                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
-                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        <a href="contact.html#site-visit" class="book-btn px-5 py-2.5 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform gap-2 text-sm whitespace-nowrap" title="Book a Site Visit">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span class="hidden sm:inline">Site Visit</span>
                         </a>
                     </div>
                 </div>
@@ -304,6 +308,8 @@
                 <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
                 <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
                 <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="work.html" class="block text-primary-text font-semibold text-lg py-2">Our Work</a>
+                <a href="quote.html" class="block text-primary-text font-semibold text-lg py-2">Get a Quote</a>
                 <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
             </nav>
             <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
@@ -317,8 +323,9 @@
                 </button>
             </div>
             <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+                <a href="contact.html#site-visit" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Book Free Site Visit
+                </a>
             </div>
         </div>
     </div>
@@ -328,25 +335,49 @@
     <main class="flex-grow">
 
         <!-- ═══════ SECTION 1: PAGE HERO ═══════ -->
-        <section class="hero-about relative w-full min-h-[65vh] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/60"></div>
-            <div class="absolute inset-0 opacity-[0.05]" style="background-image: linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px); background-size: 60px 60px;"></div>
+        <section class="min-h-[90vh] flex items-center justify-center hero-about relative w-full pt-32 pb-20 overflow-hidden border-b border-border">
+            <!-- Glassmorphic overlay for extreme legibility -->
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
 
-            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-32 pb-20 text-center text-white">
-                <span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-blue-500/20 backdrop-blur-sm border border-blue-400/40 text-blue-100 text-sm font-semibold tracking-wide uppercase">
-                    <i class="fa-solid fa-users mr-2"></i> About AQUADRILL
-                </span>
-                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 text-blue-300 text-sm font-bold tracking-wide uppercase shadow-sm border border-blue-500/30 backdrop-blur-md mb-6">
+                    <i class="fa-solid fa-users"></i> About AQUADRILL
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white drop-shadow-lg leading-tight mb-6 tracking-tight">
                     The People Behind<br>
-                    <span class="text-blue-300">Reliable Water.</span>
+                    <span class="text-blue-400">Reliable Water.</span>
                 </h1>
-                <p class="text-base sm:text-lg md:text-xl text-blue-50/90 max-w-2xl mx-auto leading-relaxed mb-8">
+                <p class="text-blue-50 text-lg drop-shadow-md sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
                     Since 2009, AQUADRILL has drilled over 2,500 borewells and installed hundreds of water systems — earning a reputation built on rugged equipment, honest pricing, and work that lasts.
                 </p>
-                <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-blue-100/80">
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Founded 2009</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 15+ Years Experience</span>
-                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> ISO Certified</span>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">Founded 2009</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-hard-hat"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">15+ Years Exp</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-certificate"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">ISO Certified</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -681,6 +712,8 @@
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="process.html" class="footer-link">Our Process</a></li>
                         <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="work.html" class="footer-link">Our Work</a></li>
+                        <li><a href="quote.html" class="footer-link">Get a Quote</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>

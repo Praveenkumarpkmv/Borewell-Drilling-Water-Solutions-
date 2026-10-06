@@ -81,6 +81,7 @@
             transition: color 0.3s;
             padding: 0.5rem 0.75rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--color-accent) !important;
@@ -201,10 +202,8 @@
         }
 
         /* ═══ SERVICES HERO (dark radial) ═══ */
-        .hero-services {
-            position: relative;
-            background: radial-gradient(ellipse at top right, #1E3A8A 0%, #0F172A 55%, #020617 100%);
-            overflow: hidden;
+.hero-services {
+            background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(30,58,138,0.88) 50%, rgba(15,23,108,0.95) 100%), url('asserts/services1.avif') center/cover no-repeat;
         }
         .hero-services::before {
             content: '';
@@ -382,8 +381,8 @@
     <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
 </a>
 
-            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
-                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+            <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                <div class="flex xl:space-x-1 2xl:space-x-4 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
                     <div class="dropdown-wrapper">
                         <button class="nav-link flex items-center" id="home-dropdown-btn">
                             Home
@@ -398,6 +397,8 @@
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="process.html" class="nav-link">Our Process</a>
                     <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="work.html" class="nav-link">Our Work</a>
+                    <a href="quote.html" class="nav-link">Get a Quote</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -414,8 +415,9 @@
                         </svg>
                     </button>
                     <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
-                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
-                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        <a href="contact.html#site-visit" class="book-btn px-5 py-2.5 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform gap-2 text-sm whitespace-nowrap" title="Book a Site Visit">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span class="hidden sm:inline">Site Visit</span>
                         </a>
                     </div>
                 </div>
@@ -452,6 +454,8 @@
                 <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
                 <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
                 <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="work.html" class="block text-primary-text font-semibold text-lg py-2">Our Work</a>
+                <a href="quote.html" class="block text-primary-text font-semibold text-lg py-2">Get a Quote</a>
                 <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
             </nav>
             <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
@@ -465,8 +469,9 @@
                 </button>
             </div>
             <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+                <a href="contact.html#site-visit" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Book Free Site Visit
+                </a>
             </div>
         </div>
     </div>
@@ -474,39 +479,32 @@
     <!-- ═══════════════ MAIN CONTENT — SERVICES ═══════════════ -->
     <main class="flex-grow">
 <!-- ═══════ SECTION 1: PROFESSIONAL HERO ═══════ -->
-<section class="relative w-full bg-slate-950 overflow-hidden">
+<section class="min-h-[90vh] flex items-center justify-center relative w-full pt-32 pb-20 hero-services overflow-hidden border-b border-border">
 
-    <!-- Solid dark background with a single subtle gradient -->
-    <div class="absolute inset-0" style="background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);"></div>
+    <!-- Glassmorphic overlay for extreme legibility -->
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
 
-    <!-- Single subtle grid pattern -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 80px 80px;"></div>
-
-    <!-- One soft glow -->
-    <div class="absolute top-0 right-0 w-[700px] h-[700px] rounded-full blur-3xl pointer-events-none" style="background: radial-gradient(circle, rgba(37,99,235,0.18) 0%, transparent 70%);"></div>
-
-    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 pt-40 pb-24">
+    <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
 
         <!-- Top: eyebrow -->
-        <div class="text-center mb-8">
-            <span class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 backdrop-blur-sm">
-                <span class="relative flex h-2 w-2">
+        <div class="inline-flex items-center justify-center mb-6">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 text-blue-300 text-sm font-bold tracking-wide uppercase shadow-sm border border-blue-500/30 backdrop-blur-md">
+                <span class="relative flex h-2 w-2 mr-1">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
                 </span>
-                <span class="text-xs font-bold tracking-[0.2em] uppercase text-blue-100">Now Booking · Free Site Visits</span>
-            </span>
+                Now Booking · Free Site Visits
+            </div>
         </div>
 
         <!-- Headline -->
-        <h1 class="text-center font-bold tracking-tight text-white leading-[1.05] mb-6 max-w-4xl mx-auto"
-            style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 7vw, 5.5rem);">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-tight mb-6 tracking-tight drop-shadow-lg">
             Six core services.<br>
-            <span class="italic text-transparent bg-clip-text" style="background-image: linear-gradient(135deg, #93C5FD 0%, #60A5FA 50%, #22D3EE 100%);">One trusted team.</span>
+            <span class="text-blue-400">One trusted team.</span>
         </h1>
 
         <!-- Subtitle -->
-        <p class="text-center text-lg sm:text-xl text-blue-100/70 max-w-2xl mx-auto leading-relaxed mb-10">
+        <p class="text-blue-50 text-lg drop-shadow-md sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
             From geological survey to final filtration — every step of your water journey, delivered by certified engineers with transparent pricing.
         </p>
 
@@ -526,63 +524,63 @@
         <!-- Service grid — 6 tiles, non-clickable -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-16 max-w-5xl mx-auto">
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-bore-hole text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-bore-hole"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">Drilling</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹350/ft</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">From ₹350/ft</div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-faucet text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-faucet"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">Pumps</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹18,500</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">From ₹18,500</div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-filter text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-filter"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">Purification</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">From ₹8,999</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">From ₹8,999</div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-shower text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-shower"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">Softener</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">Hard water fix</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">Hard water fix</div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-network-wired text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-network-wired"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">Pipeline</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">Full plumbing</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">Full plumbing</div>
                 </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center gap-3 p-5 rounded-2xl border border-white/10 bg-white/[0.03]">
-                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                    <i class="fa-solid fa-screwdriver-wrench text-white text-lg"></i>
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-sm font-bold text-white">AMC</div>
-                    <div class="text-[10px] text-blue-100/50 mt-0.5 font-medium">24/7 coverage</div>
+                    <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">24/7 coverage</div>
                 </div>
             </div>
 
@@ -590,19 +588,19 @@
 
         <!-- Stats row -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-2 transform transition hover:-translate-y-1 hover:border-blue-500/50">
                 <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">2500+</div>
                 <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Projects Done</div>
             </div>
-            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-2 transform transition hover:-translate-y-1 hover:border-blue-500/50">
                 <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">15+</div>
                 <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Years Exp</div>
             </div>
-            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-2 transform transition hover:-translate-y-1 hover:border-blue-500/50">
                 <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">98%</div>
                 <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Success Rate</div>
             </div>
-            <div class="text-center p-6 rounded-2xl border border-white/10 bg-white/[0.03]">
+            <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-2 transform transition hover:-translate-y-1 hover:border-blue-500/50">
                 <div class="text-4xl font-bold text-white mb-1.5 stat-number" style="font-family: 'Playfair Display', serif;">24/7</div>
                 <div class="text-[11px] text-blue-100/60 font-semibold uppercase tracking-[0.15em]">Support</div>
             </div>
@@ -1220,6 +1218,8 @@
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="process.html" class="footer-link">Our Process</a></li>
                         <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="work.html" class="footer-link">Our Work</a></li>
+                        <li><a href="quote.html" class="footer-link">Get a Quote</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>

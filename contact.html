@@ -85,6 +85,7 @@
             transition: color 0.3s;
             padding: 0.5rem 0.75rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--color-accent) !important;
@@ -320,8 +321,8 @@
     <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
 </a>
 
-            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
-                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+            <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                <div class="flex xl:space-x-1 2xl:space-x-4 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
                     <div class="dropdown-wrapper">
                         <button class="nav-link flex items-center" id="home-dropdown-btn">
                             Home
@@ -336,6 +337,8 @@
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="process.html" class="nav-link">Our Process</a>
                     <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="work.html" class="nav-link">Our Work</a>
+                    <a href="quote.html" class="nav-link">Get a Quote</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -352,8 +355,9 @@
                         </svg>
                     </button>
                     <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
-                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
-                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        <a href="contact.html#site-visit" class="book-btn px-5 py-2.5 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform gap-2 text-sm whitespace-nowrap" title="Book a Site Visit">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span class="hidden sm:inline">Site Visit</span>
                         </a>
                     </div>
                 </div>
@@ -390,6 +394,8 @@
                 <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
                 <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
                 <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="work.html" class="block text-primary-text font-semibold text-lg py-2">Our Work</a>
+                <a href="quote.html" class="block text-primary-text font-semibold text-lg py-2">Get a Quote</a>
                 <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
             </nav>
             <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
@@ -403,8 +409,9 @@
                 </button>
             </div>
             <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+                <a href="contact.html#site-visit" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Book Free Site Visit
+                </a>
             </div>
         </div>
     </div>
@@ -413,71 +420,62 @@
     <main class="flex-grow">
 
                 <!-- ═══════ SECTION 1: CONTACT HERO ═══════ -->
-        <section class="relative w-full pt-32 pb-20 overflow-hidden bg-background border-b border-border">
-            <!-- Decorative blobs -->
-            <div class="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[120px] pointer-events-none translate-x-1/3 -translate-y-1/3"></div>
+        <section class="min-h-[90vh] flex items-center justify-center hero-contact relative w-full pt-32 pb-20 overflow-hidden border-b border-border">
+            <!-- Glassmorphic overlay for extreme legibility -->
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
             
-            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 relative z-10">
-                <div class="text-center max-w-3xl mx-auto">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent-light text-accent mb-6 shadow-lg shadow-accent/20">
-                        <i class="fa-regular fa-comments text-2xl"></i>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-primary-text mb-6 tracking-tight">
-                        Let's Talk About <br class="hidden sm:block"> Your Water Needs.
-                    </h1>
-                    <p class="text-secondary-text text-lg sm:text-xl leading-relaxed mb-0">
-                        Need a site survey? Have questions about our drilling rigs? Want a free quote? We are here to help. Reach out to our certified engineers today.
-                    </p>
+            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 text-blue-300 text-sm font-bold tracking-wide uppercase shadow-sm border border-blue-500/30 backdrop-blur-md mb-6">
+                    <i class="fa-regular fa-comments"></i> Support & Enquiries
                 </div>
-            </div>
-        </section><!-- ═══════ SECTION 2: CONTACT METHODS (3 Quick Cards) ═══════ -->
-        <section class="section-padding bg-background">
-            <div class="max-w-7xl mx-auto">
-                <div class="text-center mb-14">
-                    <span class="text-accent font-bold text-sm tracking-widest uppercase">Reach Us</span>
-                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-4">Three Ways to Connect</h2>
-                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto">
-                        Pick whichever is fastest for you — all channels are monitored 24/7.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white drop-shadow-lg leading-tight mb-6 tracking-tight">
+                    Let's Talk About <br>
+                    <span class="text-blue-400">Your Water Needs.</span>
+                </h1>
+                <p class="text-blue-50 text-lg drop-shadow-md sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+                    Need a site survey? Have questions about our drilling rigs? Want a free quote? We are here to help. Reach out to our certified engineers today.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
                     <!-- Phone -->
-                    <div class="contact-card">
-                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
-                            <i class="fa-solid fa-phone text-white text-2xl"></i>
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 flex items-center justify-center mb-1 shadow-inner">
+                            <i class="fa-solid fa-phone text-blue-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-2">Call Us</h3>
-                        <p class="text-secondary-text text-sm mb-5">Available 24/7 for urgent enquiries and emergencies.</p>
-                        <a href="tel:+18005550199" class="text-accent font-bold text-lg hover:text-blue-700 transition"><span class="whitespace-nowrap">+1 (800) 555-0199</span></a>
+                        <div class="text-center">
+                            <div class="text-white font-bold text-lg leading-tight mb-1">+1 (800) 555-0199</div>
+                            <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">Available 24/7</div>
+                        </div>
                     </div>
 
                     <!-- Email -->
-                    <div class="contact-card">
-                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
-                            <i class="fa-solid fa-envelope text-white text-2xl"></i>
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 flex items-center justify-center mb-1 shadow-inner">
+                            <i class="fa-solid fa-envelope text-blue-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-2">Email Us</h3>
-                        <p class="text-secondary-text text-sm mb-5">For quotes, partnerships, and detailed project enquiries.</p>
-                        <a href="mailto:info@aquadrill.com" class="text-accent font-bold text-lg hover:text-blue-700 transition">info@aquadrill.com</a>
+                        <div class="text-center">
+                            <div class="text-white font-bold text-lg leading-tight mb-1">info@aquadrill.com</div>
+                            <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">For Quotes & Info</div>
+                        </div>
                     </div>
 
                     <!-- WhatsApp -->
-                    <div class="contact-card">
-                        <div class="w-16 h-16 mx-auto rounded-2xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg shadow-blue-600/25">
-                            <i class="fa-brands fa-whatsapp text-white text-2xl"></i>
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 flex items-center justify-center mb-1 shadow-inner">
+                            <i class="fa-brands fa-whatsapp text-blue-400 text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-primary-text mb-2">WhatsApp</h3>
-                        <p class="text-secondary-text text-sm mb-5">Send photos of your site for a faster, more accurate quote.</p>
-                        <a href="#" class="text-accent font-bold text-lg hover:text-blue-700 transition">Chat with us →</a>
+                        <div class="text-center">
+                            <div class="text-white font-bold text-lg leading-tight mb-1">Chat With Us</div>
+                            <div class="text-blue-200 font-bold uppercase tracking-widest text-[9px]">Send Site Photos</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-     <!-- ═══════ SECTION 3: SITE VISIT FORM (Main Section) ═══════ -->
-<section class="section-padding bg-hover">
+<!-- ═══════ SECTION 3: SITE VISIT FORM (Main Section) ═══════ -->
+
+<section id="site-visit" class="section-padding bg-hover">
     <div class="max-w-7xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
@@ -899,6 +897,8 @@
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="process.html" class="footer-link">Our Process</a></li>
                         <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="work.html" class="footer-link">Our Work</a></li>
+                        <li><a href="quote.html" class="footer-link">Get a Quote</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>

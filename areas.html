@@ -85,6 +85,7 @@
             transition: color 0.3s;
             padding: 0.5rem 0.75rem;
             font-weight: 600;
+            white-space: nowrap;
         }
         .nav-link:hover {
             color: var(--color-accent) !important;
@@ -327,8 +328,8 @@
     <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
 </a>
 
-            <div class="hidden xl:flex items-center xl:space-x-4 2xl:space-x-6 rtl:space-x-reverse">
-                <div class="flex xl:space-x-3 2xl:space-x-6 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+            <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                <div class="flex xl:space-x-1 2xl:space-x-4 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
                     <div class="dropdown-wrapper">
                         <button class="nav-link flex items-center" id="home-dropdown-btn">
                             Home
@@ -343,6 +344,8 @@
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="process.html" class="nav-link">Our Process</a>
                     <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="work.html" class="nav-link">Our Work</a>
+                    <a href="quote.html" class="nav-link">Get a Quote</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
@@ -359,8 +362,9 @@
                         </svg>
                     </button>
                     <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
-                        <a href="signup.html" class="book-btn w-14 h-14 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform" title="Sign Up">
-                            <i class="fa-solid fa-user-plus text-xl"></i>
+                        <a href="contact.html#site-visit" class="book-btn px-5 py-2.5 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform gap-2 text-sm whitespace-nowrap" title="Book a Site Visit">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span class="hidden sm:inline">Site Visit</span>
                         </a>
                     </div>
                 </div>
@@ -397,6 +401,8 @@
                 <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
                 <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
                 <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="work.html" class="block text-primary-text font-semibold text-lg py-2">Our Work</a>
+                <a href="quote.html" class="block text-primary-text font-semibold text-lg py-2">Get a Quote</a>
                 <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
             </nav>
             <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
@@ -410,8 +416,9 @@
                 </button>
             </div>
             <div class="flex mt-5 gap-5 w-full">
-                <a href="login.html" class="flex-1 btn-outline text-center py-1.5 rounded-xl font-bold text-sm shadow-md">Login</a>
-                <a href="signup.html" class="flex-1 book-btn text-center py-2 rounded-xl font-bold text-sm shadow-md">Sign Up</a>
+                <a href="contact.html#site-visit" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Book Free Site Visit
+                </a>
             </div>
         </div>
     </div>
@@ -420,7 +427,7 @@
     <main class="flex-grow">
 
                                 <!-- ═══════ SECTION 1: AREAS HERO ═══════ -->
-        <section class="hero-areas relative w-full pt-32 pb-24 overflow-hidden border-b border-border">
+        <section class="min-h-[90vh] flex items-center justify-center hero-areas relative w-full pt-32 pb-24 overflow-hidden border-b border-border">
             <!-- Glassmorphic overlay for extreme legibility -->
             <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
             
@@ -890,6 +897,8 @@
                         <li><a href="services.html" class="footer-link">Services</a></li>
                         <li><a href="process.html" class="footer-link">Our Process</a></li>
                         <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="work.html" class="footer-link">Our Work</a></li>
+                        <li><a href="quote.html" class="footer-link">Get a Quote</a></li>
                         <li><a href="contact.html" class="footer-link">Contact</a></li>
                     </ul>
                 </div>

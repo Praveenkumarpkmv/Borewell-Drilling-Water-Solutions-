@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="asserts/fav.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&display=swap" rel="stylesheet">
+    <title>Get a Quote | AQUADRILL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-primary-text: #1E293B; 
+            --color-secondary-text: #475569;
+            --color-accent: #2563EB; 
+            --color-accent-light: #EFF6FF; 
+            --color-border: #E2E8F0; 
+            --color-hover: #F8FAFC; 
+            --color-footer-bg: #0F172A;
+            --color-footer-text: #F1F5F9; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #020617;
+            --color-primary-text: #F8FAFC;
+            --color-secondary-text: #94A3B8;
+            --color-accent: #3B82F6; 
+            --color-accent-light: #1E3A8A; 
+            --color-border: #1E293B; 
+            --color-hover: #0F172A;
+            --color-footer-bg: #020617;
+            --color-footer-text: #F8FAFC;
+        }
+        
+        * { -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+        
+        .font-display { font-family: 'Playfair Display', serif; }
+        
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .text-accent-light { color: var(--color-accent-light); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .border-border { border-color: var(--color-border); }
+
+        h1, h2, h3, h4, h5, h6 { font-weight: 500 !important; }
+        p, .text-secondary-text { font-weight: 400 !important; }
+
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading { color: #3B82F6 !important; }
+        #main-footer .footer-link:hover {
+            color: #60A5FA;
+            padding-left: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+            padding: 0.5rem 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .nav-link:hover { color: var(--color-accent) !important; }
+
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background-color: var(--color-background);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.25rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        .btn-primary, .book-btn {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E3A8A 100%);
+            color: white;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary:hover, .book-btn:hover {
+            opacity: 0.88;
+            transform: scale(1.04);
+            box-shadow: 0 6px 18px rgba(59,130,246,0.3);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--color-accent);
+            border: 2px solid var(--color-accent);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-outline:hover {
+            background: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(59,130,246,0.25);
+        }
+        html[data-theme='dark'] .btn-outline {
+            color: #3B82F6;
+            border-color: #3B82F6;
+        }
+        html[data-theme='dark'] .btn-outline:hover {
+            background: #3B82F6;
+            color: #FFF;
+        }
+        .btn-cta-white {
+            background: white;
+            color: #2563EB;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-cta-white:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+
+        /* ═══ QUOTE PAGE — UNIQUE STYLES ═══ */
+
+        .section-padding { padding: 5rem 1rem; }
+        @media (min-width: 768px) { .section-padding { padding: 6rem 2rem; } }
+        @media (min-width: 1280px) { .section-padding { padding: 7rem 4rem; } }
+
+        /* Hero — dark with big number */
+        .hero-quote {
+            background: linear-gradient(135deg, rgba(15,23,42,0.94) 0%, rgba(30,58,138,0.88) 50%, rgba(15,23,108,0.95) 100%), url('asserts/quote1.avif') center/cover no-repeat;
+        }
+        .hero-quote::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(at 20% 30%, rgba(37, 99, 235, 0.25) 0px, transparent 50%),
+                radial-gradient(at 80% 70%, rgba(6, 182, 212, 0.15) 0px, transparent 50%);
+        }
+        .hero-quote::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* Wizard step card */
+        .wizard-card {
+            background: var(--color-background);
+            border: 1.5px solid var(--color-border);
+            border-radius: 1.75rem;
+            padding: 2rem 1.75rem;
+            transition: all 0.3s ease;
+        }
+        @media (min-width: 640px) {
+            .wizard-card { padding: 2.5rem 2.25rem; }
+        }
+
+        /* Progress bar */
+        .progress-track-quote {
+            height: 4px;
+            border-radius: 999px;
+            background: var(--color-border);
+            overflow: hidden;
+        }
+        .progress-fill-quote {
+            height: 100%;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #3B82F6, #1E3A8A);
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Step dots */
+        .step-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .step-circle {
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            border: 2px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-secondary-text);
+            transition: all 0.3s ease;
+        }
+        .step-circle.active {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: white;
+            box-shadow: 0 4px 12px rgba(37,99,235,0.35);
+        }
+        .step-circle.done {
+            background: #22C55E;
+            border-color: #22C55E;
+            color: white;
+        }
+
+        /* Option tiles (radio style) */
+        .option-tile {
+            position: relative;
+            padding: 1.25rem 1.25rem 1.25rem 3.75rem;
+            border: 1.5px solid var(--color-border);
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            background: var(--color-background);
+            display: block;
+        }
+        .option-tile:hover {
+            border-color: var(--color-accent);
+            background: var(--color-accent-light);
+        }
+        .option-tile input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .option-tile .option-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2.25rem;
+            height: 2.25rem;
+            border-radius: 0.75rem;
+            background: var(--color-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            transition: all 0.25s ease;
+            font-size: 0.95rem;
+        }
+        .option-tile .option-title {
+            font-weight: 700;
+            color: var(--color-primary-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+        .option-tile .option-desc {
+            font-size: 0.75rem;
+            color: var(--color-secondary-text);
+        }
+        .option-tile input[type="radio"]:checked ~ * {
+            /* not used directly, use :has fallback */
+        }
+        .option-tile:has(input[type="radio"]:checked) {
+            border-color: var(--color-accent);
+            background: var(--color-accent-light);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.15);
+        }
+        .option-tile:has(input[type="radio"]:checked) .option-icon {
+            background: var(--color-accent);
+            color: white;
+        }
+
+        /* Form fields */
+        .field-label-quote {
+            display: block;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--color-primary-text);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.01em;
+        }
+        .field-input-quote {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border-radius: 0.75rem;
+            border: 1.5px solid var(--color-border);
+            background: var(--color-hover);
+            color: var(--color-primary-text);
+            font-size: 0.9rem;
+            font-family: inherit;
+            line-height: 1.4;
+            transition: all 0.25s ease;
+        }
+        .field-input-quote:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            background: var(--color-background);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+        }
+        .field-input-quote::placeholder {
+            color: var(--color-secondary-text);
+            opacity: 0.6;
+        }
+        select.field-input-quote {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.75rem;
+        }
+
+        /* Success state */
+        .success-banner {
+            display: none;
+            background: linear-gradient(135deg, #DCFCE7 0%, #D1FAE5 100%);
+            border: 1.5px solid #86EFAC;
+            border-radius: 1.25rem;
+            padding: 2rem;
+            text-align: center;
+        }
+        html[data-theme='dark'] .success-banner {
+            background: rgba(34,197,94,0.1);
+            border-color: rgba(34,197,94,0.35);
+        }
+        .success-banner.show {
+            display: block;
+            animation: popIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Trust badges row */
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: var(--color-hover);
+            border: 1px solid var(--color-border);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- ═══════════════ HEADER / NAVBAR (IDENTICAL) ═══════════════ -->
+    <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
+        <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
+            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
+    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
+    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+</a>
+
+            <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                <div class="flex xl:space-x-1 2xl:space-x-4 rtl:space-x-reverse rtl:ml-6 text-primary-text font-medium text-[15px] 2xl:text-base">
+                    <div class="dropdown-wrapper">
+                        <button class="nav-link flex items-center" id="home-dropdown-btn">
+                            Home
+                            <svg class="w-3 h-3 ml-1 relative top-[2.5px] transition-transform duration-200 text-primary-text" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a href="index.html">Home 1</a>
+                            <a href="home2.html">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="process.html" class="nav-link">Our Process</a>
+                    <a href="areas.html" class="nav-link">Service Areas</a>
+                    <a href="work.html" class="nav-link">Our Work</a>
+                    <a href="quote.html" class="nav-link">Get a Quote</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+
+                <div class="w-px h-6 bg-border xl:mx-1 2xl:mx-3"></div>
+                
+                <div class="flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
+                    <button id="theme-toggle" class="icon-btn text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    </button>
+                    <button id="lang-icon" class="text-primary-text hover:text-accent p-2 rounded-xl bg-hover border border-border transition duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                        </svg>
+                    </button>
+                    <div class="flex items-center xl:ml-2 rtl:xl:ml-0 rtl:xl:mr-2 2xl:ml-4 rtl:2xl:ml-0 rtl:2xl:mr-4">
+                        <a href="contact.html#site-visit" class="book-btn px-5 py-2.5 rounded-full font-bold shadow-md flex items-center justify-center text-white hover:scale-105 transition-transform gap-2 text-sm whitespace-nowrap" title="Book a Site Visit">
+                            <i class="fa-solid fa-calendar-check text-lg"></i>
+                            <span class="hidden sm:inline">Site Visit</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:hidden flex items-center">
+                <button id="mobile-menu-open" class="icon-btn text-primary-text hover:text-accent p-1.5 rounded-full"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg></button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ═══════════════ MOBILE MENU DRAWER (IDENTICAL) ═══════════════ -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="text-2xl font-serif font-extrabold tracking-wide flex items-center gap-2">
+                    <i class="fa-solid fa-water text-accent"></i>
+                    <span class="text-accent">AQUADRILL</span>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-lg py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-base py-1">Home 2</a>
+                    </div>
+                </div>
+                <a href="about.html" class="block text-primary-text font-semibold text-lg py-2">About Us</a>
+                <a href="services.html" class="block text-primary-text font-semibold text-lg py-2">Services</a>
+                <a href="process.html" class="block text-primary-text font-semibold text-lg py-2">Our Process</a>
+                <a href="areas.html" class="block text-primary-text font-semibold text-lg py-2">Service Areas</a>
+                <a href="work.html" class="block text-primary-text font-semibold text-lg py-2">Our Work</a>
+                <a href="quote.html" class="block text-primary-text font-semibold text-lg py-2">Get a Quote</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-lg py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-4 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                </svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center">
+                    <svg class="w-6 h-6 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-6 h-6 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-5 w-full">
+                <a href="contact.html#site-visit" class="flex-1 book-btn text-center py-3 rounded-xl font-bold text-sm shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-calendar-check text-lg"></i> Book Free Site Visit
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN CONTENT — GET A QUOTE ═══════════════ -->
+    <main class="flex-grow">
+
+        <!-- ═══════ SECTION 1: PAGE HERO ═══════ -->
+        <section class="min-h-[90vh] flex items-center justify-center hero-quote relative w-full pt-32 pb-20 overflow-hidden border-b border-border">
+            <!-- Glassmorphic overlay for extreme legibility -->
+            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 text-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/50 text-blue-300 text-sm font-bold tracking-wide uppercase shadow-sm border border-blue-500/30 backdrop-blur-md mb-6">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Get a Quote
+                </div>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black text-white drop-shadow-lg leading-tight mb-6 tracking-tight">
+                    Tell us <br>
+                    <span class="text-blue-400">your site.</span>
+                </h1>
+                <p class="text-blue-50 text-lg drop-shadow-md sm:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+                    A guided 3-step form. Takes two minutes. You get an honest quote within 24 hours — no obligation.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-1"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">Answer Questions</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-2"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">We Call in 24h</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
+                        <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm">
+                            <i class="fa-solid fa-3"></i>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-sm font-bold text-white">Free Site Survey</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 2: THE WIZARD (3-STEP FORM) ═══════ -->
+        <section class="section-padding bg-hover relative">
+            <div class="max-w-4xl mx-auto">
+
+                <!-- Progress / step indicator -->
+                <div class="mb-10">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="step-indicator">
+                            <div class="step-circle active" id="circle-1">1</div>
+                            <span class="hidden sm:inline text-xs font-bold text-secondary-text uppercase tracking-wider">Project</span>
+                        </div>
+                        <div class="flex-1 mx-3 h-0.5 bg-border"></div>
+                        <div class="step-indicator">
+                            <div class="step-circle" id="circle-2">2</div>
+                            <span class="hidden sm:inline text-xs font-bold text-secondary-text uppercase tracking-wider">Site Details</span>
+                        </div>
+                        <div class="flex-1 mx-3 h-0.5 bg-border"></div>
+                        <div class="step-indicator">
+                            <div class="step-circle" id="circle-3">3</div>
+                            <span class="hidden sm:inline text-xs font-bold text-secondary-text uppercase tracking-wider">Contact</span>
+                        </div>
+                    </div>
+                    <div class="progress-track-quote">
+                        <div class="progress-fill-quote" id="progressFill" style="width: 33%;"></div>
+                    </div>
+                </div>
+
+                <!-- Wizard card -->
+                <div class="wizard-card">
+
+                    <!-- SUCCESS BANNER (hidden by default) -->
+                    <div class="success-banner" id="successBanner">
+                        <div class="w-16 h-16 mx-auto rounded-full bg-green-500 flex items-center justify-center mb-5 shadow-lg">
+                            <i class="fa-solid fa-check text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-primary-text mb-2" style="font-family: 'Playfair Display', serif;">Quote Request Received</h3>
+                        <p class="text-secondary-text text-sm mb-6">Thank you. Our team will call you within 24 hours to schedule your free site survey.</p>
+                        <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                            <a href="index.html" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm shadow-md">
+                                <i class="fa-solid fa-house"></i> Back to Home
+                            </a>
+                            <a href="work.html" class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm">
+                                <i class="fa-solid fa-briefcase"></i> View Our Work
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- FORM WRAPPER -->
+                    <div id="formWrapper">
+
+                        <!-- STEP 1 -->
+                        <div class="wizard-step" data-step="1">
+                            <div class="mb-7">
+                                <span class="text-accent font-bold text-xs tracking-[0.25em] uppercase">Step 1 of 3</span>
+                                <h2 class="text-2xl sm:text-3xl font-bold mt-3 text-primary-text" style="font-family: 'Playfair Display', serif;">
+                                    What kind of project is this?
+                                </h2>
+                                <p class="text-secondary-text text-sm mt-2">Choose the option that best fits your needs.</p>
+                            </div>
+
+                            <div class="space-y-3 mb-8">
+                                <label class="option-tile">
+                                    <input type="radio" name="projectType" value="borewell">
+                                    <span class="option-icon"><i class="fa-solid fa-bore-hole"></i></span>
+                                    <span class="block">
+                                        <span class="option-title">New Borewell Drilling</span>
+                                        <span class="option-desc">Site survey, drilling, casing & yield testing</span>
+                                    </span>
+                                </label>
+
+                                <label class="option-tile">
+                                    <input type="radio" name="projectType" value="pump">
+                                    <span class="option-icon"><i class="fa-solid fa-faucet"></i></span>
+                                    <span class="block">
+                                        <span class="option-title">Pump Installation</span>
+                                        <span class="option-desc">Submersible, monoblock, or jet pump setup</span>
+                                    </span>
+                                </label>
+
+                                <label class="option-tile">
+                                    <input type="radio" name="projectType" value="purification">
+                                    <span class="option-icon"><i class="fa-solid fa-filter"></i></span>
+                                    <span class="block">
+                                        <span class="option-title">Water Purification</span>
+                                        <span class="option-desc">RO, UV, softener, or iron removal system</span>
+                                    </span>
+                                </label>
+
+                                <label class="option-tile">
+                                    <input type="radio" name="projectType" value="complete">
+                                    <span class="option-icon"><i class="fa-solid fa-crown"></i></span>
+                                    <span class="block">
+                                        <span class="option-title">Complete Water Solution</span>
+                                        <span class="option-desc">Borewell + pump + purification + pipeline</span>
+                                    </span>
+                                </label>
+
+                                <label class="option-tile">
+                                    <input type="radio" name="projectType" value="amc">
+                                    <span class="option-icon"><i class="fa-solid fa-screwdriver-wrench"></i></span>
+                                    <span class="block">
+                                        <span class="option-title">AMC / Maintenance</span>
+                                        <span class="option-desc">Servicing or repair of existing system</span>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <div class="flex justify-end">
+                                <button type="button" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold shadow-md" data-next="2">
+                                    Next <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2 -->
+                        <div class="wizard-step hidden" data-step="2">
+                            <div class="mb-7">
+                                <span class="text-accent font-bold text-xs tracking-[0.25em] uppercase">Step 2 of 3</span>
+                                <h2 class="text-2xl sm:text-3xl font-bold mt-3 text-primary-text" style="font-family: 'Playfair Display', serif;">
+                                    Tell us about the site.
+                                </h2>
+                                <p class="text-secondary-text text-sm mt-2">The more details, the more accurate the quote.</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                <div>
+                                    <label class="field-label-quote">Property Type</label>
+                                    <select class="field-input-quote">
+                                        <option value="">Select property type</option>
+                                        <option>Home / Villa</option>
+                                        <option>Apartment / Society</option>
+                                        <option>Farm / Agricultural Land</option>
+                                        <option>Commercial Building</option>
+                                        <option>Industrial / Factory</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="field-label-quote">Current Water Source</label>
+                                    <select class="field-input-quote">
+                                        <option value="">Select current source</option>
+                                        <option>No existing water</option>
+                                        <option>Old borewell (dry/low yield)</option>
+                                        <option>Municipal supply</option>
+                                        <option>Well / Open well</option>
+                                        <option>Tanker water</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                <div>
+                                    <label class="field-label-quote">City</label>
+                                    <input type="text" class="field-input-quote" placeholder="E.g. Mumbai">
+                                </div>
+                                <div>
+                                    <label class="field-label-quote">Area / Locality</label>
+                                    <input type="text" class="field-input-quote" placeholder="E.g. Andheri West">
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                <div>
+                                    <label class="field-label-quote">Approx. Depth Needed</label>
+                                    <select class="field-input-quote">
+                                        <option value="">Not sure / Estimate</option>
+                                        <option>Up to 300 ft</option>
+                                        <option>300 – 600 ft</option>
+                                        <option>600 – 900 ft</option>
+                                        <option>900+ ft</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="field-label-quote">Water Requirement</label>
+                                    <select class="field-input-quote">
+                                        <option value="">Select daily requirement</option>
+                                        <option>Up to 500 L/day</option>
+                                        <option>500 – 2,000 L/day</option>
+                                        <option>2,000 – 10,000 L/day</option>
+                                        <option>10,000+ L/day</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-8">
+                                <label class="field-label-quote">Additional Details (Optional)</label>
+                                <textarea class="field-input-quote" rows="4" placeholder="Any specific challenges, prior drilling attempts, or requirements we should know about?"></textarea>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <button type="button" class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm" data-prev="1">
+                                    <i class="fa-solid fa-arrow-left"></i> Back
+                                </button>
+                                <button type="button" class="btn-primary inline-flex items-center gap-2 px-7 py-3.5 rounded-full font-bold shadow-md" data-next="3">
+                                    Next <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3 -->
+                        <div class="wizard-step hidden" data-step="3">
+                            <div class="mb-7">
+                                <span class="text-accent font-bold text-xs tracking-[0.25em] uppercase">Step 3 of 3</span>
+                                <h2 class="text-2xl sm:text-3xl font-bold mt-3 text-primary-text" style="font-family: 'Playfair Display', serif;">
+                                    How should we reach you?
+                                </h2>
+                                <p class="text-secondary-text text-sm mt-2">We'll call to confirm a free site visit at your convenience.</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                                <div>
+                                    <label class="field-label-quote">Full Name *</label>
+                                    <input type="text" class="field-input-quote" placeholder="John Doe" required>
+                                </div>
+                                <div>
+                                    <label class="field-label-quote">Phone Number *</label>
+                                    <input type="tel" class="field-input-quote" placeholder="+91 98765 43210" required>
+                                </div>
+                            </div>
+
+                            <div class="mb-5">
+                                <label class="field-label-quote">Email Address</label>
+                                <input type="email" class="field-input-quote" placeholder="you@example.com">
+                            </div>
+
+                            <div class="mb-8">
+                                <label class="field-label-quote">Best Time to Call</label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="callTime" class="peer hidden" checked>
+                                        <div class="text-center py-3 rounded-xl border-1.5 border-border bg-background text-sm font-semibold text-secondary-text peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all">Morning</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="callTime" class="peer hidden">
+                                        <div class="text-center py-3 rounded-xl border-1.5 border-border bg-background text-sm font-semibold text-secondary-text peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all">Afternoon</div>
+                                    </label>
+                                    <label class="cursor-pointer">
+                                        <input type="radio" name="callTime" class="peer hidden">
+                                        <div class="text-center py-3 rounded-xl border-1.5 border-border bg-background text-sm font-semibold text-secondary-text peer-checked:bg-accent peer-checked:text-white peer-checked:border-accent transition-all">Evening</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 mb-8">
+                                <input type="checkbox" id="agreeQuote" class="mt-1 w-4 h-4 accent-blue-600 shrink-0" checked>
+                                <label for="agreeQuote" class="text-xs text-secondary-text leading-relaxed cursor-pointer">
+                                    I agree to be contacted by AQUADRILL regarding this quote. This is not a confirmed booking.
+                                </label>
+                            </div>
+
+                            <div class="flex items-center justify-between">
+                                <button type="button" class="btn-outline inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-sm" data-prev="2">
+                                    <i class="fa-solid fa-arrow-left"></i> Back
+                                </button>
+                                <button type="button" class="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold shadow-md" id="submitQuote">
+                                    <i class="fa-solid fa-paper-plane"></i> Get My Quote
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 3: WHAT HAPPENS NEXT (4 STEPS) ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="text-accent font-bold text-xs tracking-[0.25em] uppercase">What Happens Next</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 text-primary-text leading-tight" style="font-family: 'Playfair Display', serif;">
+                        From form to<br><span class="italic text-accent">free site visit.</span>
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Step -->
+                    <div class="relative">
+                        <div class="text-7xl font-bold text-accent/10 absolute -top-4 right-2" style="font-family: 'Playfair Display', serif;">01</div>
+                        <div class="relative z-10 pt-6">
+                            <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg">
+                                <i class="fa-solid fa-phone text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-primary-text">We Call You</h4>
+                            <p class="text-secondary-text text-sm leading-relaxed">Within 24 hours to confirm details and answer any questions you have.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="text-7xl font-bold text-accent/10 absolute -top-4 right-2" style="font-family: 'Playfair Display', serif;">02</div>
+                        <div class="relative z-10 pt-6">
+                            <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg">
+                                <i class="fa-solid fa-map-location-dot text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-primary-text">Free Site Visit</h4>
+                            <p class="text-secondary-text text-sm leading-relaxed">Our engineer visits your site, analyses terrain, and tests water quality if present.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="text-7xl font-bold text-accent/10 absolute -top-4 right-2" style="font-family: 'Playfair Display', serif;">03</div>
+                        <div class="relative z-10 pt-6">
+                            <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg">
+                                <i class="fa-solid fa-file-invoice-dollar text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-primary-text">Written Quote</h4>
+                            <p class="text-secondary-text text-sm leading-relaxed">Itemised, fixed-price quote delivered within 24 hours of the visit.</p>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <div class="text-7xl font-bold text-accent/10 absolute -top-4 right-2" style="font-family: 'Playfair Display', serif;">04</div>
+                        <div class="relative z-10 pt-6">
+                            <div class="w-12 h-12 rounded-xl bg-custom-gradient flex items-center justify-center mb-5 shadow-lg">
+                                <i class="fa-solid fa-handshake text-white"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-2 text-primary-text">You Decide</h4>
+                            <p class="text-secondary-text text-sm leading-relaxed">No pressure, no obligation. If the quote works, we schedule the work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 4: TRUST (WHY QUOTE WITH US) ═══════ -->
+        <section class="py-24 bg-background">
+            <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+                    
+                    <!-- Left: Title & Image (Sticky) -->
+                    <div class="lg:col-span-5 lg:sticky top-32">
+                        <span class="text-accent font-bold text-sm tracking-[0.2em] uppercase mb-4 block">The Aquadrill Promise</span>
+                        <h2 class="text-4xl sm:text-5xl font-bold mt-2 text-primary-text leading-tight mb-6" style="font-family: 'Playfair Display', serif;">
+                            A quote you can <br><span class="italic text-accent">actually trust.</span>
+                        </h2>
+                        <p class="text-secondary-text text-lg leading-relaxed mb-10 max-w-md">
+                            We don't inflate. We don't hide charges. We give you the real cost of a real solution — and stand behind it.
+                        </p>
+                        
+                        <div class="rounded-2xl overflow-hidden shadow-2xl relative max-w-md">
+                            <img src="asserts/quote1.avif" alt="Site survey team" class="w-full h-[350px] object-cover hover:scale-105 transition-transform duration-700">
+                            <!-- Overlay Badge -->
+                            <div class="absolute bottom-6 left-6 bg-background p-4 rounded-xl shadow-xl flex items-center gap-4">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-file-contract text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-secondary-text uppercase font-bold tracking-wider">Average Turnaround</p>
+                                    <p class="text-xl font-bold text-primary-text">24 Hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Numbered List -->
+                    <div class="lg:col-span-7 flex flex-col justify-center">
+                        <div class="border-t border-border">
+                            
+                            <!-- Item 1 -->
+                            <div class="group py-10 border-b border-border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start hover:bg-hover transition-colors px-6 -mx-6 rounded-2xl">
+                                <div class="text-5xl sm:text-7xl font-bold text-accent/20 group-hover:text-accent transition-colors" style="font-family: 'Playfair Display', serif; line-height: 0.8;">01</div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-primary-text mb-3">No Hidden Charges</h3>
+                                    <p class="text-secondary-text text-base leading-relaxed max-w-lg">Every line item, clearly written. We factor in soil conditions and drilling depth upfront. Nothing magically appears mid-project.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 2 -->
+                            <div class="group py-10 border-b border-border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start hover:bg-hover transition-colors px-6 -mx-6 rounded-2xl">
+                                <div class="text-5xl sm:text-7xl font-bold text-accent/20 group-hover:text-accent transition-colors" style="font-family: 'Playfair Display', serif; line-height: 0.8;">02</div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-primary-text mb-3">24-Hour Turnaround</h3>
+                                    <p class="text-secondary-text text-base leading-relaxed max-w-lg">Time is water. We call within a day of your inquiry and send your finalized, written quote within 24 hours after our site visit.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 3 -->
+                            <div class="group py-10 border-b border-border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start hover:bg-hover transition-colors px-6 -mx-6 rounded-2xl">
+                                <div class="text-5xl sm:text-7xl font-bold text-accent/20 group-hover:text-accent transition-colors" style="font-family: 'Playfair Display', serif; line-height: 0.8;">03</div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-primary-text mb-3">Fixed Pricing</h3>
+                                    <p class="text-secondary-text text-base leading-relaxed max-w-lg">Your quote is your price. We shoulder the risk of the unknown. We don't add surprise machinery costs after the work begins.</p>
+                                </div>
+                            </div>
+
+                            <!-- Item 4 -->
+                            <div class="group py-10 border-b border-border flex flex-col sm:flex-row gap-6 sm:gap-8 items-start hover:bg-hover transition-colors px-6 -mx-6 rounded-2xl">
+                                <div class="text-5xl sm:text-7xl font-bold text-accent/20 group-hover:text-accent transition-colors" style="font-family: 'Playfair Display', serif; line-height: 0.8;">04</div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-primary-text mb-3">Talk to Engineers</h3>
+                                    <p class="text-secondary-text text-base leading-relaxed max-w-lg">No outsourced call centres. From day one, you speak directly with the hydro-geologists and engineers who will actually execute your drilling.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+<!-- ═══════ SECTION 5: PRICING GUIDE (RANGE REFERENCE) ═══════ -->
+        <section class="section-padding bg-background">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-14">
+                    <span class="text-accent font-bold text-xs tracking-[0.25em] uppercase">Quick Reference</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 text-primary-text leading-tight" style="font-family: 'Playfair Display', serif;">
+                        Approximate pricing,<br><span class="italic text-accent">before we even visit.</span>
+                    </h2>
+                    <p class="text-secondary-text text-base sm:text-lg max-w-2xl mx-auto mt-5">
+                        These are indicative starting ranges. Your actual quote depends on site conditions, depth, and system choice.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                    <div class="bg-hover rounded-3xl p-7 border border-border card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-bore-hole text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-text mb-2">Borewell Drilling</h4>
+                        <div class="text-2xl font-bold text-accent mb-4" style="font-family: 'Playfair Display', serif;">₹350<span class="text-xs text-secondary-text font-normal">/ft</span></div>
+                        <ul class="space-y-2 text-sm text-secondary-text">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Survey & rig setup</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Casing & yield test</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Depth up to 1500 ft</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-hover rounded-3xl p-7 border border-border card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-faucet text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-text mb-2">Pump Installation</h4>
+                        <div class="text-2xl font-bold text-accent mb-4" style="font-family: 'Playfair Display', serif;">₹18,500<span class="text-xs text-secondary-text font-normal">+</span></div>
+                        <ul class="space-y-2 text-sm text-secondary-text">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Submersible pump</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Control panel & wiring</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> 3-yr warranty</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-hover rounded-3xl p-7 border border-border card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-filter text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-text mb-2">Water Purification</h4>
+                        <div class="text-2xl font-bold text-accent mb-4" style="font-family: 'Playfair Display', serif;">₹8,999<span class="text-xs text-secondary-text font-normal">+</span></div>
+                        <ul class="space-y-2 text-sm text-secondary-text">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> RO / UV systems</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> 7–9 stage options</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Installation included</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-hover rounded-3xl p-7 border border-border card-hover">
+                        <div class="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-crown text-accent text-lg"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-primary-text mb-2">Complete Package</h4>
+                        <div class="text-2xl font-bold text-accent mb-4" style="font-family: 'Playfair Display', serif;">₹65,000<span class="text-xs text-secondary-text font-normal">+</span></div>
+                        <ul class="space-y-2 text-sm text-secondary-text">
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Borewell + pump</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> Purification + pipeline</li>
+                            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-accent mt-1 text-xs"></i> 5-yr unified warranty</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="mt-10 text-center">
+                    <p class="text-secondary-text text-sm">
+                        Need a more specific estimate? <a href="contact.html" class="text-accent font-bold hover:underline">Talk to our team</a> — or just fill the form above.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════ SECTION 6: FAQ + CTA ═══════ -->
+        <section class="section-padding bg-custom-gradient relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-10 left-10 w-40 h-40 rounded-full bg-white"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 rounded-full bg-white"></div>
+                <div class="absolute top-1/2 left-1/3 w-32 h-32 rounded-full bg-white"></div>
+            </div>
+            <div class="relative z-10 max-w-4xl mx-auto text-center text-white">
+                <i class="fa-solid fa-file-invoice-dollar text-5xl mb-6 opacity-90"></i>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-5 leading-tight" style="font-family: 'Playfair Display', serif;">
+                    Prefer to talk instead?
+                </h2>
+                <p class="text-base sm:text-lg text-blue-100/90 max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Skip the form and speak directly with a certified engineer. We'll answer any question and set up your free site visit.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="tel:+18005550199" class="btn-cta-white w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base shadow-xl flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-phone"></i> Call +1 (800) 555-0199
+                    </a>
+                    <a href="contact.html" class="w-full sm:w-auto px-8 py-4 rounded-full font-bold text-base border-2 border-white/60 text-white hover:bg-white hover:text-blue-700 transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> Email Us
+                    </a>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mt-12 text-sm text-blue-100/80">
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Free Site Assessment</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> Transparent Pricing</span>
+                    <span class="flex items-center gap-2"><i class="fa-solid fa-check-circle"></i> 24/7 Support</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════ FOOTER (IDENTICAL) ═══════════════ -->
+    <footer id="main-footer" class="pt-20 transition-colors duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="text-3xl font-serif font-extrabold tracking-wide flex items-center gap-2 mb-4">    
+                        <i class="fa-solid fa-water text-accent"></i>
+                        <span class="text-accent">AQUADRILL</span>
+                    </a>
+                    <p class="text-lg leading-relaxed max-w-sm !text-white-400">
+                        Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
+                    </p>                    
+                    <div class="flex gap-6 mt-10">
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-accent transition text-xl"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link">Home 1</a></li>
+                        <li><a href="home2.html" class="footer-link">Home 2</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="services.html" class="footer-link">Services</a></li>
+                        <li><a href="process.html" class="footer-link">Our Process</a></li>
+                        <li><a href="areas.html" class="footer-link">Service Areas</a></li>
+                        <li><a href="work.html" class="footer-link">Our Work</a></li>
+                        <li><a href="quote.html" class="footer-link">Get a Quote</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Address</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-accent text-center w-5"></i>
+                            <span>45 Borewell Road,<br>Water District, WD 560001</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-phone text-accent text-center w-5"></i>
+                            <a href="tel:+18005550199" class="footer-link">+1 (800) 555-0199</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-accent text-center w-5"></i>
+                            <a href="mailto:info@aquadrill.com" class="footer-link">info@aquadrill.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-heading font-bold text-xl mb-6">Newsletter</h4>
+                    <div class="flex flex-col space-y-4">
+                        <input type="email" placeholder="Email address" class="p-4 text-sm rounded-xl bg-gray-900 border border-gray-800 focus:outline-none text-white" />
+                        <button class="btn-primary font-bold py-3 rounded-xl">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="py-10 text-center text-white-500 text-sm">© 2026 AQUADRILL . All rights reserved. Borewell Drilling & Water Solutions.</div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            const setupAccordion = (toggleId, menuId, iconId) => {
+                const toggle = document.getElementById(toggleId);
+                toggle?.addEventListener('click', () => {
+                    const menu = document.getElementById(menuId);
+                    const icon = document.getElementById(iconId);
+                    menu.classList.toggle('hidden');
+                    icon.classList.toggle('rotate-180');
+                });
+            };
+            setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            const setActiveNavLink = () => {
+                const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href') === currentPath) {
+                        link.classList.add('active', 'text-accent', 'font-bold');
+                    } else {
+                        link.classList.remove('active', 'text-accent', 'font-bold');
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('home-dropdown-btn')?.classList.add('active', 'text-accent', 'font-bold');
+                }
+
+                document.querySelectorAll('#drawer-content a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === currentPath) {
+                        link.classList.add('text-accent', 'font-bold');
+                        link.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (link.closest('#mobile-homes-menu')) {
+                            link.classList.add('text-secondary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        } else {
+                            link.classList.add('text-primary-text');
+                            link.classList.remove('text-accent', 'font-bold');
+                        }
+                    }
+                });
+
+                if (['index.html', 'home2.html'].includes(currentPath)) {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent', 'font-bold');
+                }
+            };
+            setActiveNavLink();
+
+            // ── WIZARD LOGIC ──
+            const wizardSteps = document.querySelectorAll('.wizard-step');
+            const progressFill = document.getElementById('progressFill');
+            const circles = [
+                document.getElementById('circle-1'),
+                document.getElementById('circle-2'),
+                document.getElementById('circle-3')
+            ];
+
+            const goToStep = (stepNum) => {
+                // Hide all steps
+                wizardSteps.forEach(s => s.classList.add('hidden'));
+                // Show target
+                document.querySelector(`.wizard-step[data-step="${stepNum}"]`)?.classList.remove('hidden');
+
+                // Update progress
+                const percent = (stepNum / 3) * 100;
+                progressFill.style.width = `${percent}%`;
+
+                // Update circles
+                circles.forEach((circle, i) => {
+                    const stepIdx = i + 1;
+                    circle.classList.remove('active', 'done');
+                    if (stepIdx < stepNum) circle.classList.add('done');
+                    if (stepIdx === stepNum) circle.classList.add('active');
+                });
+
+                // Scroll to top of wizard
+                document.querySelector('.wizard-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            };
+
+            // Next buttons
+            document.querySelectorAll('[data-next]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Validate current step before going next
+                    const currentStep = document.querySelector('.wizard-step:not(.hidden)');
+                    const radios = currentStep.querySelectorAll('input[type="radio"][name="projectType"]');
+                    if (radios.length && ![...radios].some(r => r.checked)) {
+                        alert('Please choose a project type to continue.');
+                        return;
+                    }
+                    const nextStep = parseInt(btn.getAttribute('data-next'));
+                    goToStep(nextStep);
+                });
+            });
+
+            // Prev buttons
+            document.querySelectorAll('[data-prev]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const prevStep = parseInt(btn.getAttribute('data-prev'));
+                    goToStep(prevStep);
+                });
+            });
+
+            // Submit
+            document.getElementById('submitQuote')?.addEventListener('click', () => {
+                // Optional: basic validation on required fields
+                const nameInput = document.querySelector('.wizard-step[data-step="3"] input[type="text"]');
+                const phoneInput = document.querySelector('.wizard-step[data-step="3"] input[type="tel"]');
+                
+                if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+                    alert('Please enter your name and phone number to continue.');
+                    return;
+                }
+
+                // Hide form, show success
+                document.getElementById('formWrapper').style.display = 'none';
+                document.getElementById('successBanner').classList.add('show');
+                document.querySelector('.wizard-card')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+</body>
+</html>
