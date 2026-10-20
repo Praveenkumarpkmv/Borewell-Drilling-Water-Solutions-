@@ -272,6 +272,7 @@
         }
         .faq-question {
             cursor: pointer;
+            user-select: none;
             padding: 1.25rem 1.5rem;
             display: flex;
             align-items: center;
@@ -284,10 +285,12 @@
             color: var(--color-accent);
         }
         .faq-icon {
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
         .faq-item.open .faq-icon {
             transform: rotate(180deg);
+            background-color: var(--color-accent) !important;
+            color: #FFFFFF !important;
         }
         .faq-answer {
             max-height: 0;
@@ -306,9 +309,11 @@
     <!-- ═══════════════ HEADER / NAVBAR (IDENTICAL TO SERVICES.HTML) ═══════════════ -->
     <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
         <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
-            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+            <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform duration-300 group-hover:scale-105" width="36" height="36">
+    <span class="font-extrabold tracking-wider text-2xl sm:text-[26px] leading-none select-none font-sans flex items-center">
+        <span class="text-primary-text transition-colors">AQUA</span><span class="text-accent">DRILL</span>
+    </span>
 </a>
 
             <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
@@ -364,9 +369,11 @@
         <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
             <div class="flex justify-between items-center pb-4 border-b border-border">
-                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 shrink-0" width="32" height="32">
+    <span class="font-extrabold tracking-wider text-2xl leading-none select-none font-sans flex items-center">
+        <span class="text-primary-text transition-colors">AQUA</span><span class="text-accent">DRILL</span>
+    </span>
 </a>
                 <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
@@ -426,22 +433,22 @@
                         We don't guess. We engineer. Discover our transparent, six-step methodology that guarantees water security on every single site.
                     </p>
                 
-                                    <div class="grid grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
-                        <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
-                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-map-location-dot"></i></div>
-                            <span class="font-bold text-white text-lg">1. Survey</span>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto items-stretch">
+                        <div class="bg-black/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transition hover:-translate-y-1 hover:border-blue-500/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-map-location-dot"></i></div>
+                            <span class="font-bold text-white text-base sm:text-lg whitespace-nowrap">1. Survey</span>
                         </div>
-                        <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50 transform translate-y-6 sm:translate-y-8">
-                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-truck-fast"></i></div>
-                            <span class="font-bold text-white text-lg">2. Setup</span>
+                        <div class="bg-black/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transition hover:-translate-y-1 hover:border-blue-500/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
+                            <span class="font-bold text-white text-base sm:text-lg whitespace-nowrap">2. Setup</span>
                         </div>
-                        <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50">
-                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-bore-hole"></i></div>
-                            <span class="font-bold text-white text-lg">3. Drill</span>
+                        <div class="bg-black/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transition hover:-translate-y-1 hover:border-blue-500/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-bore-hole"></i></div>
+                            <span class="font-bold text-white text-base sm:text-lg whitespace-nowrap">3. Drill</span>
                         </div>
-                        <div class="bg-black/40 backdrop-blur-xl rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transform transition hover:-translate-y-1 hover:border-blue-500/50 transform translate-y-6 sm:translate-y-8">
-                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm"><i class="fa-solid fa-faucet-drip"></i></div>
-                            <span class="font-bold text-white text-lg">4. Pump</span>
+                        <div class="bg-black/40 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-4 sm:p-5 border border-white/10 shadow-2xl flex flex-col items-center justify-center text-center gap-3 transition hover:-translate-y-1 hover:border-blue-500/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-black/50 border border-white/20 text-blue-400 flex items-center justify-center text-xl shadow-sm shrink-0"><i class="fa-solid fa-faucet-drip"></i></div>
+                            <span class="font-bold text-white text-base sm:text-lg whitespace-nowrap">4. Pump</span>
                         </div>
                     </div>
             </div>
@@ -733,10 +740,14 @@
                         <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold mt-3 mb-5">Frequently Asked</h2>
 
                         <div class="space-y-4">
-                            <div class="faq-item">
+                            <div class="faq-item open">
                                 <div class="faq-question">
                                     <span>How long does the entire process take?</span>
-                                    <i class="fa-solid fa-chevron-down faq-icon text-secondary-text"></i>
+                                    <div class="faq-icon w-8 h-8 rounded-full bg-accent-light text-accent flex items-center justify-center shrink-0">
+                                        <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div class="faq-answer">
                                     <p class="text-secondary-text text-sm leading-relaxed">Typical residential borewells are completed in 24–72 hours from the start of drilling. Projects with additional purification or pipeline work may take up to 5 working days.</p>
@@ -746,7 +757,11 @@
                             <div class="faq-item">
                                 <div class="faq-question">
                                     <span>What if no water is found at the drilling point?</span>
-                                    <i class="fa-solid fa-chevron-down faq-icon text-secondary-text"></i>
+                                    <div class="faq-icon w-8 h-8 rounded-full bg-accent-light text-accent flex items-center justify-center shrink-0">
+                                        <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div class="faq-answer">
                                     <p class="text-secondary-text text-sm leading-relaxed">If our initial survey recommends a point and no water is found within the agreed depth, we provide a second drilling attempt at a nearby point at a reduced rate. Terms are clearly documented in the quote.</p>
@@ -756,7 +771,11 @@
                             <div class="faq-item">
                                 <div class="faq-question">
                                     <span>Do you service my area?</span>
-                                    <i class="fa-solid fa-chevron-down faq-icon text-secondary-text"></i>
+                                    <div class="faq-icon w-8 h-8 rounded-full bg-accent-light text-accent flex items-center justify-center shrink-0">
+                                        <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div class="faq-answer">
                                     <p class="text-secondary-text text-sm leading-relaxed">We cover a wide region. Please check our Service Areas page or contact us — we'll confirm coverage for your location within minutes.</p>
@@ -766,7 +785,11 @@
                             <div class="faq-item">
                                 <div class="faq-question">
                                     <span>What warranty do you provide?</span>
-                                    <i class="fa-solid fa-chevron-down faq-icon text-secondary-text"></i>
+                                    <div class="faq-icon w-8 h-8 rounded-full bg-accent-light text-accent flex items-center justify-center shrink-0">
+                                        <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </div>
                                 </div>
                                 <div class="faq-answer">
                                     <p class="text-secondary-text text-sm leading-relaxed">Drilling work carries a structural warranty. Pumps and purification systems carry manufacturer warranties (typically 1–5 years) plus our own service guarantee on installation quality.</p>
@@ -848,9 +871,11 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
                 <div class="lg:col-span-2">
-                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+                    <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none mb-4" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform duration-300 group-hover:scale-105" width="36" height="36">
+    <span class="font-extrabold tracking-wider text-2xl sm:text-[26px] leading-none select-none font-sans flex items-center">
+        <span class="text-white">AQUA</span><span class="text-blue-400">DRILL</span>
+    </span>
 </a>
                     <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
                         Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
@@ -941,6 +966,18 @@
                 });
             };
             setupAccordion('mobile-homes-toggle', 'mobile-homes-menu', 'homes-icon');
+
+            // FAQ Accordion Interaction
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question?.addEventListener('click', () => {
+                    const isOpen = item.classList.contains('open');
+                    document.querySelectorAll('.faq-item').forEach(other => {
+                        if (other !== item) other.classList.remove('open');
+                    });
+                    item.classList.toggle('open', !isOpen);
+                });
+            });
 
             // Theme & RTL
             const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];

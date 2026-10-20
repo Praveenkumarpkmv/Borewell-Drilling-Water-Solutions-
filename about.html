@@ -49,6 +49,19 @@
         .bg-accent { background-color: var(--color-accent); }
         .border-border { border-color: var(--color-border); }
 
+        /* Team Social Buttons */
+        .team-social-btn {
+            transition: all 0.2s ease;
+        }
+        .team-social-btn:hover {
+            background-color: var(--color-accent) !important;
+            border-color: var(--color-accent) !important;
+            color: #FFFFFF !important;
+        }
+        .team-social-btn:hover i {
+            color: #FFFFFF !important;
+        }
+
         /* ── Typography Weight System ── */
         h1, h2, h3, h4, h5, h6 {
             font-weight: 500 !important;
@@ -78,10 +91,14 @@
         /* Nav Link */
         .nav-link {
             position: relative;
-            transition: color 0.3s;
-            padding: 0.5rem 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            height: 2.5rem;
+            padding: 0 0.75rem;
             font-weight: 600;
             white-space: nowrap;
+            line-height: 1;
+            transition: color 0.2s, background-color 0.2s;
         }
         .nav-link:hover {
             color: var(--color-accent) !important;
@@ -230,9 +247,11 @@
     <!-- ═══════════════ HEADER / NAVBAR ═══════════════ -->
     <header class="fixed top-4 left-0 right-0 z-50 transition-all duration-300 shadow-md border border-border bg-background mx-auto w-[96%] xl:w-[96%] 2xl:w-[92%] max-w-[1600px] rounded-full" id="main-header">
         <nav class="px-6 sm:px-8 xl:px-6 2xl:px-12 py-3 flex items-center justify-between h-[70px]">
-            <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+            <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform duration-300 group-hover:scale-105" width="36" height="36">
+    <span class="font-extrabold tracking-wider text-2xl sm:text-[26px] leading-none select-none font-sans flex items-center">
+        <span class="text-primary-text transition-colors">AQUA</span><span class="text-accent">DRILL</span>
+    </span>
 </a>
 
             <div class="hidden xl:flex items-center xl:space-x-2 2xl:space-x-4 rtl:space-x-reverse">
@@ -288,9 +307,11 @@
         <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
         <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out">
             <div class="flex justify-between items-center pb-4 border-b border-border">
-                <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+                <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 shrink-0" width="32" height="32">
+    <span class="font-extrabold tracking-wider text-2xl leading-none select-none font-sans flex items-center">
+        <span class="text-primary-text transition-colors">AQUA</span><span class="text-accent">DRILL</span>
+    </span>
 </a>
                 <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
             </div>
@@ -570,8 +591,8 @@
                         <p class="text-accent text-sm font-semibold mb-3">Founder &amp; CEO</p>
                         <p class="text-secondary-text text-sm leading-relaxed flex-grow">25 years in water engineering. Founded AQUADRILL with a single rig in 2009.</p>
                         <div class="flex justify-center gap-3 mt-5 pt-5 border-t border-border w-full">
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fab fa-linkedin-in text-sm"></i></a>
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fa-solid fa-envelope text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="Email"><i class="fa-solid fa-envelope text-sm"></i></a>
                         </div>
                     </div>
 
@@ -583,8 +604,8 @@
                         <p class="text-accent text-sm font-semibold mb-3">Operations Director</p>
                         <p class="text-secondary-text text-sm leading-relaxed flex-grow">Oversees all field operations, scheduling, and quality control across every project.</p>
                         <div class="flex justify-center gap-3 mt-5 pt-5 border-t border-border w-full">
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fab fa-linkedin-in text-sm"></i></a>
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fa-solid fa-envelope text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="Email"><i class="fa-solid fa-envelope text-sm"></i></a>
                         </div>
                     </div>
 
@@ -596,8 +617,8 @@
                         <p class="text-accent text-sm font-semibold mb-3">Chief Engineer</p>
                         <p class="text-secondary-text text-sm leading-relaxed flex-grow">Leads geological surveys, rig design, and every critical drilling decision.</p>
                         <div class="flex justify-center gap-3 mt-5 pt-5 border-t border-border w-full">
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fab fa-linkedin-in text-sm"></i></a>
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fa-solid fa-envelope text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="Email"><i class="fa-solid fa-envelope text-sm"></i></a>
                         </div>
                     </div>
 
@@ -609,8 +630,8 @@
                         <p class="text-accent text-sm font-semibold mb-3">Customer Success Head</p>
                         <p class="text-secondary-text text-sm leading-relaxed flex-grow">Ensures every client gets transparent quotes, on-time delivery, and post-install support.</p>
                         <div class="flex justify-center gap-3 mt-5 pt-5 border-t border-border w-full">
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fab fa-linkedin-in text-sm"></i></a>
-                            <a href="#" class="w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-accent hover:text-white hover:border-accent transition"><i class="fa-solid fa-envelope text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-sm"></i></a>
+                            <a href="#" class="team-social-btn w-9 h-9 rounded-lg bg-hover border border-border flex items-center justify-center text-secondary-text hover:bg-blue-600 hover:text-white hover:border-blue-600 transition shadow-sm" aria-label="Email"><i class="fa-solid fa-envelope text-sm"></i></a>
                         </div>
                     </div>
 
@@ -666,7 +687,7 @@
                                 <h3 class="text-2xl font-bold text-primary-text mb-3 mt-4">Start Your Project</h3>
                                 <p class="text-secondary-text mb-8">Get a free site assessment and a transparent, no-obligation quote today.</p>
                                 
-                                <a href="contact.html" class="block w-full bg-accent hover:bg-accent-hover text-white font-bold py-4 px-8 rounded-xl transition-colors mb-4 shadow-lg shadow-accent/30 text-lg">
+                                <a href="contact.html" class="block w-full bg-accent hover:opacity-90 text-white font-bold py-4 px-8 rounded-xl transition duration-200 mb-4 shadow-lg shadow-accent/30 text-lg">
                                     Book Consultation
                                 </a>
                                 <a href="tel:+18005550199" class="block w-full bg-hover hover:bg-border text-primary-text font-bold py-4 px-8 rounded-xl border-2 border-border transition-colors text-lg flex items-center justify-center">
@@ -687,9 +708,11 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-16 border-b border-gray-800">
                 <div class="lg:col-span-2">
-                    <a href="index.html" class="font-serif font-extrabold tracking-wide flex items-center gap-2 shrink-0 mb-0" style="font-size: 28px !important; line-height: 1 !important; text-decoration: none;">    
-    <i class="fa-solid fa-water" style="color: #2563EB !important; font-size: 28px !important;"></i>
-    <span style="color: #2563EB !important; font-size: 28px !important; letter-spacing: 1px;">AQUADRILL</span>
+                    <a href="index.html" class="flex items-center gap-2.5 shrink-0 group focus:outline-none mb-4" style="text-decoration: none;">
+    <img src="asserts/fav.svg" alt="AQUADRILL Logo" class="w-8 h-8 sm:w-9 sm:h-9 shrink-0 transition-transform duration-300 group-hover:scale-105" width="36" height="36">
+    <span class="font-extrabold tracking-wider text-2xl sm:text-[26px] leading-none select-none font-sans flex items-center">
+        <span class="text-white">AQUA</span><span class="text-blue-400">DRILL</span>
+    </span>
 </a>
                     <p class="text-lg leading-relaxed max-w-sm !text-white-400 mt-5">
                         Rugged, dependable borewell drilling & water solutions. From site survey to pump installation, we deliver water security with precision.
